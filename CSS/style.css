@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/* 全体の初期設定 */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- 背景の1枚目（全画面固定） --- */
+.background_img {
+  position: fixed; /* 常に画面に固定 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2; /* 一番後ろ */
+  overflow: hidden;
+}
+
+.background_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画面を覆うように拡大 */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- ロゴなど2枚目の画像 --- */
+.backgroundLog_img {
+  position: fixed; /* 背景の上に重ねる */
+  top: 0;
+  left: 0;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  display: flex; /* 位置調整しやすいようにFlex */
+  /* justify-content: center; 横中央 */
+  /* align-items: center; 縦中央 */
+  z-index: -1; /* 背景より上、コンテンツより下 */
+}
+
+.backgroundLog_img img {
+  width: 30%;      /* ロゴを縮小（自由に調整可能） */
+  height: auto;
+  position: relative;
+  /* top: -350px;      上方向にずらす（調整OK） */
+  /* left: -300px ;    左に少しずらす（調整OK） */
+  opacity: 0.9;    /* 少し透けさせる（任意） */
+}
