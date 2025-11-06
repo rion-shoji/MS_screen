@@ -1,0 +1,300 @@
+/* --- 基本スタイル --- */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    overflow: hidden; /* ページ全体のスクロールを禁止 */
+}
+
+/* --- 全体レイアウト (Flexbox) --- */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 画面全体の高さ */
+}
+
+/* --- 1. ヘッダー --- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.user-avatars {
+    display: flex;
+    gap: 8px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+.avatar:last-child {
+    background-color: #dc3545;
+}
+
+/* --- 2. メインコンテンツ --- */
+.main-content {
+    flex-grow: 1; /* 残りの高さをすべて使う */
+    display: flex;
+    padding: 24px;
+    gap: 24px;
+    overflow: hidden; /* メインエリアのスクロールを防ぐ */
+}
+
+/* 2a. 写真プレビューエリア */
+.preview-area {
+    flex-grow: 1; /* 幅を最大限に広げる */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative; /* 削除ボタンの基準位置 */
+}
+
+.photo-preview {
+    flex-grow: 1;
+    background-color: #e9ecef;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #adb5bd;
+    min-height: 200px; /* 最小高さを設定 */
+}
+
+.delete-button {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 2b. 右サイドパネル (プロンプト) */
+.sidebar {
+    width: 280px; /* 固定幅 */
+    flex-shrink: 0; /* 縮まないようにする */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-info {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.hamburger-menu {
+    font-size: 24px;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.prompt-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.selected-prompts {
+    font-size: 14px;
+    color: #495057;
+    padding-left: 8px;
+}
+
+
+/* ▼▼▼ 変更点 ▼▼▼ */
+/* テキストエリア用のスタイルを追加 */
+.prompt-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.prompt-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    padding-left: 4px;
+}
+.prompt-textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical; /* 縦方向のみリサイズ可 */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box; /* paddingが幅に影響しないように */
+    background-color: #f8f9fa;
+}
+/* ▲▲▲ 変更点 ▲▲▲ */
+
+
+/* --- 3. フッター (写真リスト) --- */
+.photo-strip {
+    flex-shrink: 0; /* 高さが縮まないように */
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow-x: auto; /* 写真がはみ出たら横スクロール */
+}
+
+.thumbnail {
+    width: 80px;
+    height: 60px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    flex-shrink: 0; /* 縮まない */
+    border: 2px solid transparent;
+}
+.thumbnail.active {
+    border-color: #007bff;
+}
+
+.add-photo-button {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background-color: #e9ecef;
+    border: 1px dashed #adb5bd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #6c757d;
+    /* ▼▼▼ 変更点 ▼▼▼ */
+    /* margin-left: auto; を削除 */
+    /* ▲▲▲ 変更点 ▲▲▲ */
+}
+
+/* --- 4. 固定ボタン (次へ) --- */
+.next-button {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    transition: transform 0.2s;
+}
+.next-button:hover {
+    transform: scale(1.05);
+}
+
+/* --- 5. モーダル --- */
+/* <dialog> タグのデフォルトスタイルを利用 */
+.prompt-modal {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* モーダルの背景 */
+.prompt-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+.modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    max-height: 40vh; /* 中身が多すぎたらスクロール */
+    overflow-y: auto;
+}
+
+.prompt-item {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+}
+.prompt-item:hover {
+    background-color: #e9ecef;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.modal-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.modal-button.cancel {
+    background-color: #f1f3f5;
+    color: #495057;
+}
+.modal-button.ok {
+    background-color: #007bff;
+    color: white;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真編集画面</title>
+    <link rel="stylesheet" href="../CSS/test.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="app-header">
+            <div class="header-title">編集画面+写真追加</div>
+            <div class="user-avatars">
+                <div class="avatar">A</div>
+                <div class="avatar">B</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="preview-area">
+                <div class="photo-preview">
+                    <span>写真</span>
+                </div>
+                <button class="delete-button" aria-label="削除">🗑️</button>
+            </section>
+
+            <aside class="sidebar">
+                <div class="menu-header">
+                    <span class="menu-info">ハンバーガーメニュー：破棄、途中保存</span>
+                    <button class="hamburger-menu" aria-label="メニュー">☰</button>
+                </div>
+                
+                <button id="openModalButton" class="prompt-button">
+                    プロンプト
+                </button>
+                
+                <div class="selected-prompts">
+                    <p>プロンプト プロンプト プロンプト</p>
+                    <p>プロンプト プロンプト プロンプト</p>
+                </div>
+
+                <div class="prompt-group">
+                    <label for="textPrompt" class="prompt-label">文章プロンプト</label>
+                    <textarea id="textPrompt" class="prompt-textarea" placeholder="ここに文章プロンプトを入力..."></textarea>
+                </div>
+                </aside>
+        </main>
+
+        <footer class="photo-strip">
+            <div class="thumbnail active"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <div class="thumbnail"></div>
+            <button class="add-photo-button" aria-label="写真を追加">+</button>
+        </footer>
+
+    </div>
+
+    <button class="next-button" aria-label="次へ">→</button>
+
+
+    <dialog id="promptModal" class="prompt-modal">
+        <header class="modal-header">
+            モーダル
+        </header>
+        <section class="modal-body">
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+            <div class="prompt-item">プロンプト</div>
+        </section>
+        <footer class="modal-footer">
+            <button id="closeModalCancel" class="modal-button cancel">キャンセル</button>
+            <button id="closeModalOk" class="modal-button ok">OK</button>
+        </footer>
+    </dialog>
+
+    <script src="../js/test.js" defer></script>
+
+</body>
+</html>
