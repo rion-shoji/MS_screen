@@ -61,23 +61,30 @@ body, html {
 
 /* 2a. 写真プレビューエリア */
 .preview-area {
-    flex-grow: 1; /* 幅を最大限に広げる */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    position: relative; /* 削除ボタンの基準位置 */
+    position: relative;
+    min-width: 0; /* Flexアイテムの縮小問題を回避 */
 }
 
 .photo-preview {
-    flex-grow: 1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* flex-grow: 1; */
     background-color: #e9ecef;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #adb5bd;
-    min-height: 200px; /* 最小高さを設定 */
+    /* min-height: 200px; */
+    position: relative;
+    overflow: hidden; /* Cropperがはみ出ないように */
+}
+
+/* Cropper.js がこのimgタグを操作します */
+#previewImage {
+    display: block;
+    max-width: 100%; /* コンテナに収まるように */
+    opacity: 0; /* 初期化完了まで非表示 */
 }
 
 .delete-button {
@@ -92,6 +99,24 @@ body, html {
     cursor: pointer;
     font-size: 18px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.trim-button {
+    position: absolute;
+    bottom: 16px; 
+    right: 16px; 
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Cropper.jsのUIと重ならないよう z-index を設定 */
 }
 
 /* 2b. 右サイドパネル (プロンプト) */
@@ -141,9 +166,7 @@ body, html {
     padding-left: 8px;
 }
 
-
-/* ▼▼▼ 変更点 ▼▼▼ */
-/* テキストエリア用のスタイルを追加 */
+/* テキストエリア用のスタイル */
 .prompt-group {
     display: flex;
     flex-direction: column;
@@ -167,8 +190,6 @@ body, html {
     box-sizing: border-box; /* paddingが幅に影響しないように */
     background-color: #f8f9fa;
 }
-/* ▲▲▲ 変更点 ▲▲▲ */
-
 
 /* --- 3. フッター (写真リスト) --- */
 .photo-strip {
@@ -182,13 +203,19 @@ body, html {
     overflow-x: auto; /* 写真がはみ出たら横スクロール */
 }
 
+/* サムネイルの見た目を調整 */
 .thumbnail {
     width: 80px;
     height: 60px;
     background-color: #e9ecef;
     border-radius: 6px;
-    flex-shrink: 0; /* 縮まない */
+    flex-shrink: 0;
     border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    /* サムネイルに背景画像を設定 */
+    background-size: cover;
+    background-position: center;
 }
 .thumbnail.active {
     border-color: #007bff;
@@ -204,9 +231,6 @@ body, html {
     cursor: pointer;
     font-size: 24px;
     color: #6c757d;
-    /* ▼▼▼ 変更点 ▼▼▼ */
-    /* margin-left: auto; を削除 */
-    /* ▲▲▲ 変更点 ▲▲▲ */
 }
 
 /* --- 4. 固定ボタン (次へ) --- */
@@ -230,7 +254,6 @@ body, html {
 }
 
 /* --- 5. モーダル --- */
-/* <dialog> タグのデフォルトスタイルを利用 */
 .prompt-modal {
     border: none;
     border-radius: 12px;
@@ -240,7 +263,6 @@ body, html {
     max-width: 600px;
 }
 
-/* モーダルの背景 */
 .prompt-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
@@ -297,4 +319,80 @@ body, html {
 .modal-button.ok {
     background-color: #007bff;
     color: white;
+}
+/* --- Cropper.js UIのカスタマイズ (ここから追記) --- */
+
+/* グリッド線 (3x3の線) を非表示に */
+.cropper-view-box .cropper-dashed {
+    display: none;
+}
+
+/* 中央の十字マーカーを非表示に */
+.cropper-center {
+    display: none;
+}
+
+/* 切り抜き枠の点線の枠線を非表示に (実線は残す) */
+.cropper-view-box {
+    outline: none;
+}
+.cropper-face {
+    background-color: transparent;
+    opacity: 1;
+}
+
+/* --- ハンドルのカスタマイズ --- */
+
+/* すべてのハンドルを一旦非表示に */
+.cropper-handle {
+    display: none;
+}
+
+/* 左右のハンドル (e = east, w = west) だけを表示し、デザインを変更 */
+.cropper-handle.cropper-handle-e,
+.cropper-handle.cropper-handle-w {
+    display: block;
+    background-color: #007bff; /* ハンドルの色 */
+    width: 8px; /* ハンドルの幅 */
+    height: 40px; /* ハンドルの高さ */
+    margin-top: -20px; /* 高さを中央揃え */
+    border-radius: 4px; /* 角を丸くする */
+    border: 2px solid white; /* 白い縁取り */
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* 右ハンドルの位置調整 */
+.cropper-handle.cropper-handle-e {
+    margin-right: -6px; /* 枠線の内側に入り込むのを調整 */
+}
+
+/* 左ハンドルの位置調整 */
+.cropper-handle.cropper-handle-w {
+    margin-left: -6px; /* 枠線の内側に入り込むのを調整 */
+}
+/* --- Sortable.js (ドラッグ) 用のスタイル (ここから追記) --- */
+
+/* ドラッグ対象のサムネイルに「掴む」カーソルを表示 */
+.thumbnail {
+    cursor: grab; /* 標準のカーソル */
+}
+.thumbnail.active {
+    cursor: grab; /* activeでもgrabを優先 */
+}
+
+/* ドラッグ中のアイテム */
+.sortable-drag {
+    opacity: 0.7;
+    cursor: grabbing; /* 掴んでいる最中のカーソル */
+}
+
+/* ドラッグ中のアイテムの移動先 (ゴースト) */
+.sortable-ghost {
+    opacity: 0.3;
+    background-color: #a0cfff;
+}
+
+/* 「+」ボタンはドラッグ対象外 (カーソルを標準に戻す) */
+.add-photo-button {
+    cursor: pointer;
 }
