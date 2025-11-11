@@ -1,0 +1,144 @@
+/* preview style for the slideshow+audiomix UI */
+
+/* 説明用の色。後で消す */
+:root{
+  --bg:#ffffff;
+  --video-placeholder:#0f0;
+  --video-seek:#f00;
+  --music-seek:#00f;
+}
+
+*{box-sizing:border-box}
+
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#fff;
+  font-family:Segoe UI, Meiryo, "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+/* プレビューエリア */
+.preview-root{
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:24px 12px;
+}
+.preview-area{
+  width:80%;
+  max-width:1100px;
+  position:relative;
+}
+
+/* 動画プレースホルダー */
+.video-wrapper{
+  width: min(720px, 100%);
+  margin: 0 auto 12px;
+}
+.video-placeholder{
+  width:100%;
+  background:var(--video-placeholder);
+  aspect-ratio: 16 / 9;
+  height: auto;
+  position:relative;
+  border-radius:2px;
+  box-shadow:0 0 0 4px rgba(0,0,0,0.04) inset;
+  border:4px solid #000;
+}
+
+/* 再生/停止ボタン */
+.play-btn{
+  display:flex; /* block-level flex so margin:auto centers the button */
+  margin:10px auto;
+  width:48px;
+  height:48px;
+  border-radius:6px;
+  background:rgba(0,0,0,0.6);
+  border:2px solid rgba(255,255,255,0.12);
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:#fff;
+}
+
+.play-btn:focus{outline:3px solid rgba(255,255,255,0.12)}
+
+.icon{display:block}
+.play-icon{
+  width:0;height:0;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;
+}
+.pause-icon{
+  width:14px;height:18px;display:none;position:relative;
+}
+.pause-icon::before,.pause-icon::after{
+  content:"";position:absolute;top:0;width:4px;height:100%;background:#fff;border-radius:1px;
+}
+.pause-icon::before{left:0}
+.pause-icon::after{right:0}
+
+.play-btn.playing .play-icon{display:none}
+.play-btn.playing .pause-icon{display:block}
+
+/* シークバー */
+.seekbars{display:flex;flex-direction:column;gap:12px}
+
+/* 動画のシークバー */
+.video-seekbar{
+  width:100%;
+  height:30px;
+  background:var(--video-seek);
+  border-radius:4px;
+  border:4px solid #000;
+}
+
+/* 音楽のシークバー */
+.music-seekbar{
+  width:100%;
+  height:30px;
+  position:relative;
+}
+.music-track{
+  position:relative;
+  height:30px;
+  background:rgba(0,0,0,0.03);
+  border-radius:2px;
+  top:12px;
+  overflow:visible;
+  border:4px solid #000;
+}
+.music-bar{
+  position:absolute;
+  left:0;
+  top:-4px;
+  height:30px;
+  background:var(--music-seek);
+  border-radius:4px;
+  cursor:grab;
+  touch-action:none;
+}
+.music-bar:active{cursor:grabbing}
+
+/* エクスポートボタン */
+.actions{margin-top:28px;display:flex;justify-content:flex-end}
+.export-btn{
+  background:#fff;color:#000;padding:12px 18px;border-radius:6px;border:none;cursor:pointer;font-weight:600
+}
+
+/* ハンバーガーメニュー */
+.menu-area{position:absolute;top:12px;right:12px}
+.menu-btn{
+  width:40px;height:34px;border-radius:6px;border:none;background:rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;padding:6px
+}
+.hamburger-line{display:block;width:20px;height:2px;background:#333;margin:3px 0;border-radius:2px}
+.menu-dropdown{position:absolute;right:0;top:44px;background:#fff;color:#000;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.12);display:none;min-width:120px;padding:8px 0}
+.menu-dropdown.open{display:block}
+.menu-item{display:block;width:100%;padding:8px 12px;border:none;background:transparent;text-align:left;cursor:pointer}
+.menu-item:hover{background:rgba(0,0,0,0.04)}
+
+/* レスポンシブ */
+@media (max-width:720px){
+  .preview-area{width:95%}
+  .video-placeholder{height:180px}
+}
