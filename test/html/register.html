@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会員登録 | Refeel</title>
+  <link rel="stylesheet" href="../css/useradd_style.css">
+  <script src="../js/register.js" defer></script>
+</head>
+
+<body>
+  <div class="auth-container">
+    <!-- タイトル（白枠の外） -->
+    <h2 class="register-title">会員登録</h2>
+
+    <div class="auth-box">
+      <div class="form-inner">
+        <form action="#" method="post">
+          <!-- 名前 -->
+          <div class="form-group">
+            <label for="name">名前</label>
+            <input type="text" id="name" name="name" placeholder="大阪ハル" required>
+          </div>
+
+          <!-- メールアドレス -->
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" placeholder="refeelmemories@ref.jp" required>
+          </div>
+
+          
+          <div class="form-group">
+<label>性別</label>
+<div class="gender-group">
+<button type="button" class="gender-btn" data-value="male">男性</button> 
+<button type="button" class="gender-btn" data-value="female">女性</button>
+<button type="button" class="gender-btn no-answer" data-value="none">無回答</button>
+<input type="hidden" name="gender" id="gender" value="">
+</div>
+</div>
+
+          <!-- 生年月日 -->
+          <div class="form-group">
+            <label>生年月日</label>
+            <div class="birth-group">
+              <input type="number" name="year" placeholder="年" min="1900" max="2025">
+              <input type="number" name="month" placeholder="月" min="1" max="12">
+              <input type="number" name="day" placeholder="日" min="1" max="31">
+            </div>
+          </div>
+
+          <!-- パスワード -->
+          <div class="form-group">
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" placeholder="refeeeel0111" required>
+          </div>
+
+          <!-- 送信ボタン -->
+          <button type="submit" class="btn btn-primary"><a href="../html/confirm.html">同意して確認画面に進む</a></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
