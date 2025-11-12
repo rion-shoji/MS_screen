@@ -52,11 +52,17 @@ body, html {
 
 /* --- 2. メインコンテンツ --- */
 .main-content {
-    flex-grow: 1; /* 残りの高さをすべて使う */
+    flex-grow: 1; 
     display: flex;
     padding: 24px;
     gap: 24px;
-    overflow: hidden; /* メインエリアのスクロールを防ぐ */
+    overflow: hidden; 
+    
+    width: 90%; 
+    max-width: 1400px;
+    margin: 0 auto; /* 左右中央揃え */
+    box-sizing: border-box; 
+    justify-content: center; /* 中身のグループを中央に */
 }
 
 /* 2a. 写真プレビューエリア */
@@ -66,31 +72,34 @@ body, html {
     flex-direction: column;
     gap: 16px;
     position: relative;
-    min-width: 0; /* Flexアイテムの縮小問題を回避 */
+    min-width: 0; 
+    max-width: 1100px; /* プレビューエリア自体の最大幅 */
 }
 
 .photo-preview {
     width: 100%;
     aspect-ratio: 16 / 9;
-    /* flex-grow: 1; */
     background-color: #e9ecef;
     border-radius: 12px;
-    /* min-height: 200px; */
     position: relative;
-    overflow: hidden; /* Cropperがはみ出ないように */
+    overflow: hidden; 
 }
 
-/* Cropper.js がこのimgタグを操作します */
 #previewImage {
     display: block;
-    max-width: 100%; /* コンテナに収まるように */
-    opacity: 0; /* 初期化完了まで非表示 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 1;
 }
 
+/* ▼▼▼ 修正点 2 (ボタンの配置変更) ▼▼▼ */
 .delete-button {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    bottom: 16px; /* 下から */
+    left: 64px;  /* 2番目の位置 (16px + 40px + 8px) */
+    right: auto;
+    top: auto;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ced4da;
     border-radius: 8px;
@@ -99,12 +108,15 @@ body, html {
     cursor: pointer;
     font-size: 18px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10; 
 }
 
 .trim-button {
     position: absolute;
-    bottom: 16px; 
-    right: 16px; 
+    bottom: 16px; /* 下から */
+    left: 16px; /* 1番目の位置 */
+    right: auto; 
+    top: auto;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ced4da;
     border-radius: 8px;
@@ -116,13 +128,15 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10; /* Cropper.jsのUIと重ならないよう z-index を設定 */
+    z-index: 10; 
 }
+/* ▲▲▲ 修正点 2 ▲▲▲ */
+
 
 /* 2b. 右サイドパネル (プロンプト) */
 .sidebar {
-    width: 280px; /* 固定幅 */
-    flex-shrink: 0; /* 縮まないようにする */
+    width: 280px; 
+    flex-shrink: 0; 
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -166,41 +180,16 @@ body, html {
     padding-left: 8px;
 }
 
-/* テキストエリア用のスタイル */
-.prompt-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.prompt-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: #495057;
-    padding-left: 4px;
-}
-.prompt-textarea {
-    width: 100%;
-    min-height: 120px;
-    resize: vertical; /* 縦方向のみリサイズ可 */
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 14px;
-    box-sizing: border-box; /* paddingが幅に影響しないように */
-    background-color: #f8f9fa;
-}
-
 /* --- 3. フッター (写真リスト) --- */
 .photo-strip {
-    flex-shrink: 0; /* 高さが縮まないように */
+    flex-shrink: 0; 
     background-color: #ffffff;
     border-top: 1px solid #e0e0e0;
     padding: 16px 24px;
     display: flex;
     align-items: center;
     gap: 12px;
-    overflow-x: auto; /* 写真がはみ出たら横スクロール */
+    overflow-x: auto; 
 }
 
 /* サムネイルの見た目を調整 */
@@ -213,7 +202,6 @@ body, html {
     border: 2px solid transparent;
     cursor: pointer;
     transition: border-color 0.2s;
-    /* サムネイルに背景画像を設定 */
     background-size: cover;
     background-position: center;
 }
@@ -280,7 +268,7 @@ body, html {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 12px;
-    max-height: 40vh; /* 中身が多すぎたらスクロール */
+    max-height: 40vh; 
     overflow-y: auto;
 }
 
@@ -320,19 +308,13 @@ body, html {
     background-color: #007bff;
     color: white;
 }
-/* --- Cropper.js UIのカスタマイズ (ここから追記) --- */
-
-/* グリッド線 (3x3の線) を非表示に */
+/* --- Cropper.js UIのカスタマイズ --- */
 .cropper-view-box .cropper-dashed {
     display: none;
 }
-
-/* 中央の十字マーカーを非表示に */
 .cropper-center {
     display: none;
 }
-
-/* 切り抜き枠の点線の枠線を非表示に (実線は残す) */
 .cropper-view-box {
     outline: none;
 }
@@ -340,59 +322,81 @@ body, html {
     background-color: transparent;
     opacity: 1;
 }
-
-/* --- ハンドルのカスタマイズ --- */
-
-/* すべてのハンドルを一旦非表示に */
 .cropper-handle {
     display: none;
 }
-
-/* 左右のハンドル (e = east, w = west) だけを表示し、デザインを変更 */
 .cropper-handle.cropper-handle-e,
 .cropper-handle.cropper-handle-w {
     display: block;
-    background-color: #007bff; /* ハンドルの色 */
-    width: 8px; /* ハンドルの幅 */
-    height: 40px; /* ハンドルの高さ */
-    margin-top: -20px; /* 高さを中央揃え */
-    border-radius: 4px; /* 角を丸くする */
-    border: 2px solid white; /* 白い縁取り */
+    background-color: #007bff; 
+    width: 8px; 
+    height: 40px; 
+    margin-top: -20px; 
+    border-radius: 4px; 
+    border: 2px solid white; 
     box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
-
-/* 右ハンドルの位置調整 */
 .cropper-handle.cropper-handle-e {
-    margin-right: -6px; /* 枠線の内側に入り込むのを調整 */
+    margin-right: -6px;
 }
-
-/* 左ハンドルの位置調整 */
 .cropper-handle.cropper-handle-w {
-    margin-left: -6px; /* 枠線の内側に入り込むのを調整 */
+    margin-left: -6px;
 }
-/* --- Sortable.js (ドラッグ) 用のスタイル (ここから追記) --- */
-
-/* ドラッグ対象のサムネイルに「掴む」カーソルを表示 */
+/* --- Sortable.js (ドラッグ) 用のスタイル --- */
 .thumbnail {
-    cursor: grab; /* 標準のカーソル */
+    cursor: grab; 
 }
 .thumbnail.active {
-    cursor: grab; /* activeでもgrabを優先 */
+    cursor: grab; 
 }
-
-/* ドラッグ中のアイテム */
 .sortable-drag {
     opacity: 0.7;
-    cursor: grabbing; /* 掴んでいる最中のカーソル */
+    cursor: grabbing; 
 }
-
-/* ドラッグ中のアイテムの移動先 (ゴースト) */
 .sortable-ghost {
     opacity: 0.3;
     background-color: #a0cfff;
 }
-
-/* 「+」ボタンはドラッグ対象外 (カーソルを標準に戻す) */
 .add-photo-button {
     cursor: pointer;
+}
+
+
+/* --- トリミングモーダル用のCSS --- */
+.trim-modal {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    width: 90vw; 
+    max-width: 1200px; 
+    overflow: hidden; 
+}
+
+.trim-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+.trim-modal-body {
+    padding: 24px;
+    background-color: #f8f9fa;
+}
+
+.trim-image-container {
+    width: 100%;
+    height: 60vh; 
+    background-color: #000;
+}
+
+#trimModalImage {
+    display: block;
+    max-width: 100%;
+}
+
+/* --- 回転ボタンのスタイル --- */
+.modal-button.rotate {
+    background-color: #6c757d; 
+    color: white;
+    margin-right: auto; 
 }

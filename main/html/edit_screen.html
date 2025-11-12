@@ -6,10 +6,10 @@
     <title>写真編集画面（トリミング機能付き）</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" 
-        integrity="sha512-hvNR0F/e2J7zPPfLC9auFe3/SE0yG4aJCOd/qxew74NN7eyiSKjr7xJJMu1Jy2wf7FXITpWS1E/RY8yzuXN7VA==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha512-hvNR0F/e2J7zPPfLC9auFe3/SE0yG4aJCOd/qxew74NN7eyiSKjr7xJJMu1Jy2wf7FXITpWS1E/RY8yzuXN7VA==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <link rel="stylesheet" href="../CSS/test.css">
+    <link rel="stylesheet" href="../CSS/edit_screen.css">
 </head>
 <body>
 
@@ -27,10 +27,10 @@
 
             <section class="preview-area">
                 <div class="photo-preview">
-                    <img id="previewImage" src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?w=800&q=80" alt="プレビュー写真">
+                    <img id="previewImage" src="../img/test_img_01.jpg" alt="プレビュー写真">
                 </div>
-                <!-- <button id="trimButton" class="trim-button" aria-label="トリミング">✂️</button> -->
-
+                
+                <button id="trimButton" class="trim-button" aria-label="トリミング">✂️</button>
                 <button class="delete-button" aria-label="削除">🗑️</button>
             </section>
 
@@ -46,27 +46,22 @@
                 
                 <div class="selected-prompts">
                     <p>プロンプト プロンプト プロンプト</p>
-                    <p>プロンプト プロンプト プロンプト</p>
+                    <p></p>
                 </div>
-
-                <!-- <div class="prompt-group">
-                    <label for="textPrompt" class="prompt-label">文章プロンプト</label>
-                    <textarea id="textPrompt" class="prompt-textarea" placeholder="ここに文章プロンプトを入力..."></textarea>
-                </div> -->
             </aside>
         </main>
 
         <footer class="photo-strip">
-            <div class="thumbnail active" data-src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?w=800&q=80"></div>
-            <div class="thumbnail" data-src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&q=80"></div>
-            <div class="thumbnail" data-src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80"></div>
-            <div class="thumbnail" data-src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=800&q=80"></div>
-            <div class="thumbnail" data-src="https://images.unsplash.com/photo-1542038784-56e98e014034?w=800&q=80"></div>
+            <div class="thumbnail active" data-src="../img/test_img_01.jpg"></div>
+            <div class="thumbnail" data-src="../img/test_img_02.jpg"></div>
+            <div class="thumbnail" data-src="../img/test_img_03.jpg"></div>
+            <div class="thumbnail" data-src="../img/test_img_04.jpg"></div>
+            <div class="thumbnail" data-src="../img/test_img_05.jpg"></div>
+            <div class="thumbnail" data-src="../img/test_img_06.jpg"></div>
 
             <button class="add-photo-button" aria-label="写真を追加">+</button>
         </footer>
-
-    </div>
+        </div>
 
     <button class="next-button" aria-label="次へ">→</button>
 
@@ -75,26 +70,35 @@
             モーダル
         </header>
         <section class="modal-body">
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-            <div class="prompt-item">プロンプト</div>
-        </section>
+            </section>
         <footer class="modal-footer">
             <button id="closeModalCancel" class="modal-button cancel">キャンセル</button>
             <button id="closeModalOk" class="modal-button ok">OK</button>
         </footer>
     </dialog>
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js" integrity="sha512-TelkP3PCMJv+viMWynjKcvLsQzx6dJHvIGhfqzFtZKgAjKM1YPqcwzzDEoTc/BHjf43PcPzTQOjuTr4YdE8lNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js" integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
-    <script src="../js/test.js" defer></script>
+
+    <dialog id="trimModal" class="trim-modal">
+        <header class="modal-header">
+            トリミング
+        </header>
+        <section class="trim-modal-body">
+            <div class="trim-image-container">
+                <img id="trimModalImage" src="">
+            </div>
+        </section>
+        <footer class="modal-footer">
+            <button id="trimRotateLeft" class="modal-button rotate">⟲ 左回転</button>
+            <button id="trimRotateRight" class="modal-button rotate">⟳ 右回転</button>
+            <button id="trimCancelButton" class="modal-button cancel">キャンセル</button>
+            <button id="trimApplyButton" class="modal-button ok">適用</button>
+        </footer>
+    </dialog>
+    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js" integrity="sha512-TelkP3PCMJv+viMWynjKcvLsQzx6dJHvIGhfqzFtZKgAjKM1YPqcwzzDEoTc/BHjf43PcPzTQOjuTr4YdE8lNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js" integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    
+    <script src="../js/edit_screen.js"></script>
 
 </body>
 </html>
