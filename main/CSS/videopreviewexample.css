@@ -1,0 +1,319 @@
+
+:root {
+    --primary-yellow: #FFDA79; /* A soft yellow */
+    --light-blue: #A0D2EB;    /* A gentle blue */
+    --gray-background: #F3F3F3; /* Light gray for background areas */
+    --dark-gray-text: #333;     /* Dark gray for text */
+    --medium-gray: #D3D3D3;     /* Medium gray for icons/placeholders */
+    --border-radius-large: 16px;
+    --border-radius-medium: 8px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Example font, adjust as needed */
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* White background for the page */
+    color: var(--dark-gray-text);
+    display: flex;
+    justify-content: center; /* Center the page container */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1200px; /* Max width for the content */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Subtle page shadow */
+    border-radius: var(--border-radius-large); /* Rounded corners for the page */
+    overflow: hidden; /* Ensure children respect rounded corners */
+}
+
+/* === Header === */
+.page-header {
+    display: flex;
+    justify-content: flex-end; /* Align menu to the right */
+    padding: 15px 20px;
+    background-color: #fff; /* Or match page background */
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-gray-text);
+    transition: background-color 0.2s ease;
+}
+
+.menu-button:hover {
+    background-color: var(--gray-background);
+    border-radius: var(--border-radius-medium);
+}
+
+.menu-button svg {
+    fill: currentColor; /* Use the text color */
+}
+
+
+/* === Main Content Area === */
+.main-content-area {
+    display: flex;
+    flex-grow: 1; /* Take up available vertical space */
+    padding: 0 20px 20px 20px; /* Add padding around main content */
+    gap: 20px; /* Space between image section and sidebar */
+    box-sizing: border-box;
+}
+
+.image-display-section {
+    flex: 1; /* Take up most of the space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-background);
+    border-radius: var(--border-radius-large);
+    min-height: 400px; /* Minimum height for the image area */
+}
+
+.image-placeholder {
+    text-align: center;
+    color: var(--medium-gray);
+    font-size: 3em; /* Large text for "写真" */
+    font-weight: bold;
+}
+
+/* === Prompt Sidebar === */
+.prompt-sidebar {
+    width: 280px; /* Fixed width for the sidebar */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow for sidebar */
+}
+
+.button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius-medium);
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%; /* Buttons take full width of sidebar */
+    margin-bottom: 15px; /* Space between buttons */
+    text-align: center;
+}
+
+.button:hover {
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+.button-primary {
+    background-color: var(--primary-yellow);
+    color: var(--dark-gray-text);
+}
+
+.prompt-suggestions {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left; /* Align suggestion text left */
+}
+
+.prompt-suggestion {
+    background: none;
+    border: none;
+    color: var(--dark-gray-text);
+    font-size: 0.95em;
+    cursor: pointer;
+    padding: 8px 0; /* Add padding for click area */
+    width: 100%;
+    text-align: left; /* Align text to the left */
+    margin: 0 0 8px 0; /* Space between suggestions */
+    border-bottom: 1px dashed var(--medium-gray); /* Subtle separator */
+    transition: color 0.2s ease;
+}
+
+.prompt-suggestion:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.prompt-suggestion:hover {
+    color: #007bff; /* Example hover color */
+    background-color: transparent; /* Ensure no background is added */
+    transform: none; /* Override button transform */
+}
+
+.button-text-prompt {
+    background-color: var(--primary-yellow);
+    color: var(--dark-gray-text);
+    position: relative; /* For the underline */
+}
+
+.button-text-prompt::after {
+    content: '';
+    position: absolute;
+    bottom: 8px; /* Position it just above the bottom edge */
+    left: 15%; /* Start a bit from the left */
+    right: 15%; /* End a bit from the right */
+    height: 2px; /* Thickness of the underline */
+    background-color: var(--dark-gray-text); /* Color of the underline */
+    border-radius: 1px;
+}
+
+
+/* === Bottom Control Bar === */
+.bottom-control-bar {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0; /* Separator line */
+    gap: 15px; /* Space between controls */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-gray-text);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: var(--border-radius-medium);
+}
+
+.icon-button:hover {
+    background-color: var(--gray-background);
+}
+
+.delete-button {
+    color: #E57373; /* Reddish for delete */
+}
+
+.delete-button:hover {
+    background-color: rgba(229, 115, 115, 0.1);
+}
+
+.carousel-container {
+    flex-grow: 1; /* Take available space */
+    display: flex;
+    align-items: center;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding-bottom: 10px; /* Space for scrollbar if needed */
+    gap: 10px;
+}
+
+.carousel-items {
+    display: flex;
+    gap: 10px; /* Space between carousel items */
+    padding-left: 0; /* Reset default padding */
+}
+
+.carousel-item {
+    width: 60px; /* Fixed width for thumbnails */
+    height: 60px;
+    background-color: var(--medium-gray); /* Placeholder color */
+    border-radius: var(--border-radius-medium);
+    flex-shrink: 0; /* Prevent items from shrinking */
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel-item:hover {
+    border: 2px solid var(--primary-yellow); /* Highlight on hover */
+    box-shadow: 0 0 8px rgba(255, 218, 121, 0.5);
+}
+
+.carousel-item.placeholder {
+    background-color: var(--gray-background); /* Lighter gray for placeholders */
+}
+
+.add-item-button {
+    background-color: var(--primary-yellow);
+    color: var(--dark-gray-text);
+    font-weight: bold;
+    width: 40px; /* Slightly smaller button */
+    height: 40px;
+    font-size: 1.5em;
+    margin-left: 5px; /* Space from carousel */
+}
+
+.add-item-button svg {
+    fill: currentColor;
+}
+
+.action-button {
+    background-color: var(--light-blue);
+    color: #fff; /* White arrow for contrast */
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 45px;
+    height: 45px;
+}
+
+.action-button:hover {
+    background-color: #7fbad1; /* Darker blue on hover */
+}
+
+/* === Responsive Adjustments (Example) === */
+@media (max-width: 768px) {
+    .main-content-area {
+        flex-direction: column; /* Stack image and sidebar on smaller screens */
+        padding: 0 10px 10px 10px;
+    }
+
+    .prompt-sidebar {
+        width: 100%; /* Full width on small screens */
+        flex-direction: row; /* Arrange buttons horizontally */
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .prompt-sidebar .button {
+        width: auto; /* Buttons don't need full width */
+        margin: 5px;
+    }
+
+    .prompt-suggestions {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        order: 3; /* Place suggestions after other buttons */
+        margin: 10px 5px 5px 5px; /* Adjust margin */
+    }
+
+    .prompt-suggestion {
+        width: auto; /* Suggestions don't need full width */
+        margin: 3px 0;
+        padding: 5px 0;
+    }
+
+    .image-display-section {
+        min-height: 250px; /* Reduce height on smaller screens */
+    }
+
+    .bottom-control-bar {
+        padding: 10px;
+    }
+
+    .carousel-container {
+        overflow-x: auto;
+        gap: 8px;
+    }
+}
