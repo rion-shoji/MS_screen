@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>プロジェクト一覧 | ReFeel</title>
+  <!-- 正しいパスに修正（typoの styless.css は使用しない） -->
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <!-- 固定サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <img class="sidebar__logo" src="../image/refeel001.png" alt="ReFeel" />
+      <div class="sidebar__tagline">あの日 あの時 あの場所で</div>
+    </div>
+
+    <button class="btn btn--primary sidebar__new">
+      <span class="icon">＋</span> 新規作成
+    </button>
+
+    <nav class="sidebar__nav" aria-label="サイドメニュー">
+      <div class="nav-group">
+        <button class="nav-group__toggle" aria-expanded="true">
+          <span class="icon">▸</span> プロジェクト
+        </button>
+        <ul class="nav">
+          <li class="nav__item"><a href="./project.html">作成済</a></li>
+          <li class="nav__item"><a href="./project.html#tab-editing">編集中</a></li>
+          <li class="nav__item"><a href="./project.html#tab-trash">ごみ箱</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar__footer">
+      <a class="sidebar__settings" href="#"><span class="icon">⚙</span> 設定</a>
+    </div>
+  </aside>
+
+  <!-- 固定トップバー -->
+  <header class="topbar">
+    <h1 class="topbar__title">プロジェクト</h1>
+    <div class="topbar__spacer"></div>
+    <div class="topbar__search">
+      <span class="icon" aria-hidden="true">🔍</span>
+      <input type="search" placeholder="タイトル、日付" aria-label="検索" />
+    </div>
+    <button class="topbar__sort" title="並び替え">
+      <span class="icon">↔</span> 並び替え
+    </button>
+    <div class="topbar__account">
+      <img class="avatar" src="https://placehold.co/32x32" alt="春太郎" />
+      <span class="topbar__name">春太郎</span>
+    </div>
+  </header>
+
+  <!-- コンテンツ -->
+  <main class="main">
+    <section class="card project">
+      <!-- タブ -->
+      <div class="tabs tabs--pill" role="tablist" aria-label="プロジェクト切替">
+        <button class="tab is-active" role="tab" aria-selected="true" data-target="#tab-done">作成済み</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="#tab-editing">編集中 <span class="dot" aria-hidden="true"></span></button>
+        <button class="tab" role="tab" aria-selected="false" data-target="#tab-trash">ごみ箱</button>
+      </div>
+
+      <!-- パネル -->
+      <div class="tabpanels">
+        <!-- 作成済み -->
+        <section id="tab-done" class="tabpanel is-open" role="tabpanel" tabindex="0">
+          <div class="grid">
+            <article class="cardproj">
+              <div class="cardproj__thumb">
+                <span class="badge">05:09</span>
+              </div>
+              <footer class="cardproj__meta">
+                <span class="title">春次郎の運動会</span>
+                <time datetime="2025-09-23">2025/09/23</time>
+                <div class="more">
+                  <button class="more__btn" aria-haspopup="true" aria-expanded="false">⋯</button>
+                  <ul class="menu" role="menu">
+                    <li role="menuitem"><button>保存/共有</button></li>
+                    <li role="menuitem"><button>名称変更</button></li>
+                    <li role="menuitem"><button class="accent">再編集</button></li>
+                    <li role="menuitem"><button>ごみ箱</button></li>
+                  </ul>
+                </div>
+              </footer>
+            </article>
+
+            <article class="cardproj">
+              <div class="cardproj__thumb"></div>
+              <footer class="cardproj__meta">
+                <span class="title">NEWPROJECT_1011</span>
+                <time datetime="2024-10-11">2024/10/11</time>
+                <div class="more">
+                  <button class="more__btn" aria-haspopup="true" aria-expanded="false">⋯</button>
+                  <ul class="menu" role="menu">
+                    <li role="menuitem"><button>保存/共有</button></li>
+                    <li role="menuitem"><button>名称変更</button></li>
+                    <li role="menuitem"><button class="accent">再編集</button></li>
+                    <li role="menuitem"><button>ごみ箱</button></li>
+                  </ul>
+                </div>
+              </footer>
+            </article>
+          </div>
+
+          <nav class="pager" aria-label="ページ切替">
+            <button class="is-current">1</button><button>2</button><button>3</button><button>&gt;</button>
+          </nav>
+        </section>
+
+        <!-- 編集中 -->
+        <section id="tab-editing" class="tabpanel" role="tabpanel" tabindex="0">
+          <div class="grid">
+            <article class="cardproj">
+              <div class="cardproj__thumb">
+                <span class="left-note">あと5日</span>
+              </div>
+              <footer class="cardproj__meta">
+                <span class="title">成人式</span>
+                <time datetime="2024-11-22">2024/11/22</time>
+                <div class="more">
+                  <button class="more__btn">⋯</button>
+                  <ul class="menu">
+                    <li><button class="accent">再編集</button></li>
+                    <li><button>ごみ箱</button></li>
+                  </ul>
+                </div>
+              </footer>
+            </article>
+          </div>
+        </section>
+
+        <!-- ごみ箱 -->
+        <section id="tab-trash" class="tabpanel" role="tabpanel" aria-label="ごみ箱" tabindex="0">
+          <div class="grid">
+            <article class="cardproj">
+              <div class="cardproj__thumb">
+                <span class="left-note">あと3日</span>
+              </div>
+              <footer class="cardproj__meta">
+                <span class="title">NEWPRO_0214</span>
+                <time datetime="2023-02-14">2023/02/14</time>
+                <div class="more">
+                  <button class="more__btn">⋯</button>
+                  <ul class="menu">
+                    <li><button class="accent">復元</button></li>
+                    <li><button>削除</button></li>
+                  </ul>
+                </div>
+              </footer>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // タブ切替
+    document.querySelectorAll('.tabs .tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tabs .tab').forEach(b => b.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('is-open'));
+        const target = document.querySelector(tab.dataset.target);
+        if (target) target.classList.add('is-open');
+        // ハッシュ更新（任意）
+        if (tab.dataset.target.startsWith('#')) history.replaceState(null,'',tab.dataset.target);
+      });
+    });
+    // 初期表示: URLハッシュに合わせる
+    const hashTarget = document.querySelector(`.tab[data-target="${location.hash}"]`);
+    if (hashTarget) hashTarget.click();
+
+    // 3点メニュー
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.more__btn');
+      document.querySelectorAll('.more .menu').forEach(m => m.classList.remove('is-open'));
+      document.querySelectorAll('.more__btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false'));
+      if (btn) {
+        const menu = btn.parentElement.querySelector('.menu');
+        menu.classList.add('is-open');
+        btn.setAttribute('aria-expanded','true');
+        e.stopPropagation();
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.more .menu').forEach(m => m.classList.remove('is-open'));
+    });
+  </script>
+</body>
+</html>
