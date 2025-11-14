@@ -20,7 +20,7 @@
                         <circle cx="15" cy="20" r="5" fill="white"/>
                     </svg>
                 </div>
-                <h2 class="app-title">ReFeel-Management</h2>
+                <h2 class="app-title">ReFeel 管理</h2>
             </div>
             <nav class="nav">
                 <ul class="nav-list">
@@ -41,7 +41,6 @@
                             <span class="icon">👥</span> <!-- User Icon -->
                             <span>顧客</span>
                         </a>
-                        <span class="arrow">›</span>
                     </li>
                     <li class="nav-item">
                         <a href="../html/Report.html">
@@ -71,29 +70,29 @@
         <main class="main-content">
             <header class="content-header-bar">
                 <div class="breadcrumbs">
-                    Users > <span class="user-name">山本由美子</span> > Videos
+                    Users > <span class="user-name">山本由美子</span> > 動画
                 </div>
                 <div class="header-actions">
                     <span class="notification-icon">🔔</span> <!-- Notification Icon -->
-                    <button id="logout-button" class="logout-button">Log out</button>
+                    <button id="logout-button" class="logout-button">ログアウト</button>
                 </div>
             </header>
 
             <div class="content-wrapper">
                 <div class="top-actions">
-                    <button id="export-csv-button" class="btn btn-secondary">Export CSV</button>
+                    <button id="export-csv-button" class="btn btn-secondary">CSVエクスポート</button>
                     <!-- In this context, "Add Student" might be a misnomer or generic button; based on screenshot it's "Add Student" -->
-                    <button id="add-student-button" class="btn btn-primary">Add User</button>
+                    <button id="add-student-button" class="btn btn-primary">ユーザーを追加</button>
                 </div>
 
                 <div class="search-filter-bar">
                     <div class="filter-dropdown">
                         <select name="filter" id="filter-select">
-                            <option value="all">Add filter</option>
-                            <option value="title">Title</option>
-                            <option value="duration">Duration</option>
-                            <option value="created">Created</option>
-                            <option value="status">Status</option>
+                            <option value="all">フィルターを追加</option>
+                            <option value="title">タイトル</option>
+                            <option value="duration">間隔</option>
+                            <option value="created">作成</option>
+                            <option value="status">状態</option>
                         </select>
                     </div>
                     <div class="search-input-container">
@@ -108,11 +107,11 @@
                             <thead>
                                 <tr>
                                     <th></th> <!-- Thumbnail Placeholder -->
-                                    <th>Title</th>
-                                    <th>Duration</th>
-                                    <th>Created</th>
-                                    <th>Status</th>
-                                    <th>Flags</th>
+                                    <th>タイトル</th>
+                                    <th>間隔</th>
+                                    <th>作成</th>
+                                    <th>状態</th>
+                                    <th>旗</th>
                                 </tr>
                             </thead>
                             <tbody id="video-table-body">
