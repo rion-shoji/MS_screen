@@ -142,6 +142,13 @@ body, html {
     gap: 16px;
 }
 
+/* 新規追加: プロンプト入力コンテナ */
+.prompt-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* プロンプトボタンとテキストエリアの間隔 */
+}
+
 .menu-header {
     display: flex;
     justify-content: space-between;
@@ -172,6 +179,18 @@ body, html {
     text-align: left;
     font-size: 14px;
     font-weight: 500;
+}
+
+/* 新規追加: プロンプト入力用テキストエリア */
+.prompt-textarea {
+    width: 100%;
+    min-height: 150px; /* ある程度の高さを確保 */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    resize: vertical; /* 縦方向のみリサイズ可能 */
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 .selected-prompts {
