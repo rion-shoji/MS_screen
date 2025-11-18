@@ -156,12 +156,12 @@
         }
 
         .btn--ghost {
-            background: #f5f7fb;
-            border-color: #e3e8f1;
-            color: #4b5563;
+             background-color: transparent; /* 背景を透明に */
+    border: 1px solid #ED8C86; /* ピンク系の枠線 */
+    color: #ED8C86; /* ピンク系の文字色 */
         }
 
-        .btn--ghost:hover { background: #eef2f7; }
+        .btn--ghost:hover { background-color: #f7e2e5; }
 
         .btn--primary {
             background: var(--primary);
