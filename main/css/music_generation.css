@@ -1,0 +1,183 @@
+body {
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+}
+
+
+.container {
+    width: 85%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f0f8ff;
+    /* Light Blue Background */
+    border-radius: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.breadcrumbs {
+    margin-bottom: 20px;
+    color: #777;
+}
+
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.music-options {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+
+.music-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 30px;
+    width: 25%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+
+.music-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+.music-card p {
+    color: #555;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+.waveform {
+    height: 50px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.waveform-bar {
+    width: 4px;
+    background-color: #5DADE2;
+    /* Adjust color as needed */
+    height: 50%;
+    /* Initial height */
+    animation: wave 1s infinite alternate;
+}
+
+
+.waveform-bar:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.waveform-bar:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.waveform-bar:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.waveform-bar:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+.waveform-bar:nth-child(6) {
+    animation-delay: 1s;
+}
+.waveform-bar:nth-child(7) {
+    animation-delay: 0.5s;
+}
+.waveform-bar:nth-child(8) {
+    animation-delay: 0.4s;
+}
+
+
+@keyframes wave {
+    to {
+        height: 80%;
+    }
+}
+
+
+.play-button {
+    background-color: #5DADE2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+
+.radio-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    color: #555;
+}
+
+
+.radio-button input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+.actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+.actions button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+
+.back-button {
+    background-color: #F2D7D5;
+    color: #000;
+}
+
+
+.generate-button {
+    background-color: #5DADE2;
+    color: white;
+}
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .music-options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .music-card {
+        width: 80%;
+    }
+}

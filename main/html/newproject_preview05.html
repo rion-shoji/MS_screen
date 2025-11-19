@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>プレビュー</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/preview.css">
+</head>
+<body>
+    <main class="preview-root">
+        <section class="preview-area">
+
+            <!-- Video Placeholder -->
+            <div class="video-wrapper">
+                <div class="video-placeholder" id="videoPlaceholder" aria-label="動画プレースホルダー">
+                    <!-- Video content will be inserted here -->
+                </div>
+                <button id="playBtn" class="play-btn" aria-pressed="false" aria-label="再生">
+                    <span class="icon play-icon"><i class="fas fa-play"></i></span>
+                    <span class="icon pause-icon"><i class="fas fa-pause"></i></span>
+                </button>
+            </div>
+
+            <!-- Seekbars -->
+            <div class="seekbars">
+                <div class="video-seekbar" id="videoSeekbar" title="動画のシークバー"></div>
+                <div class="music-seekbar" id="musicSeekbarContainer" aria-label="音楽シークバーコンテナ">
+                    <div class="music-track" id="musicTrack">
+                        <div class="music-bar" id="musicBar" title="音楽トラック（ドラッグできます）"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button id="exportBtn" class="export-btn"><a href="../html/home.html">エクスポート</a></button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            const playBtn = document.getElementById('playBtn');
+
+            menuBtn.addEventListener('click', function() {
+                const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+                this.setAttribute('aria-expanded', !expanded);
+                menuDropdown.classList.toggle('active');
+            });
+
+            playBtn.addEventListener('click', function() {
+                const pressed = this.getAttribute('aria-pressed') === 'true' || false;
+                this.setAttribute('aria-pressed', !pressed);
+            });
+        });
+    </script>
+    <script src="../js/preview.js"></script>
+</body>
+</html>
