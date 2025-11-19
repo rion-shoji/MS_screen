@@ -25,7 +25,7 @@
         <div class="music-options">
             <div class="music-card">
                 <h3>オリジナル #01</h3>
-                <p>アップテンポ / 呪ろい</p>
+                
                 <div class="waveform">
                     <div class="waveform">
                         <div class="waveform-bar"></div>
@@ -40,17 +40,24 @@
                         <div class="waveform-bar"></div>
                     </div>
                 </div>
-                <div>
-                    <button class="play-button">▶ 聴</button>
+                
+                <audio id="audio1" src="/audio/original01.mp3"></audio> 
+                <div class="audio-controls">
+                    <button class="play-pause-button" data-audio-id="audio1">▶</button>
+                    <div class="progress-container">
+                        <input type="range" class="seek-bar" value="0" min="0" max="100">
+                        <div class="time-display">0:00 / 1:30</div>
+                    </div>
                 </div>
                 <label class="radio-button">
                     <input type="radio" name="music" value="1" checked>
                     この曲を使う
                 </label>
             </div>
+            
             <div class="music-card">
                 <h3>オリジナル #02</h3>
-                <p>しっとり / 騒励 0:30</p>
+                
                 <div class="waveform">
                     <div class="waveform">
                         <div class="waveform-bar"></div>
@@ -64,17 +71,24 @@
                         <div class="waveform-bar"></div>
                     </div>
                 </div>
-                <div>
-                    <button class="play-button">▶ 聴</button>
+
+                <audio id="audio2" src="/audio/original02.mp3"></audio> 
+                <div class="audio-controls">
+                    <button class="play-pause-button" data-audio-id="audio2">▶ </button>
+                    <div class="progress-container">
+                        <input type="range" class="seek-bar" value="0" min="0" max="100">
+                        <div class="time-display">0:00 / 1:30</div>
+                    </div>
                 </div>
                 <label class="radio-button">
                     <input type="radio" name="music" value="2">
                     この曲を使う
                 </label>
             </div>
+            
             <div class="music-card">
                 <h3>オリジナル #03</h3>
-                <p>おだやか / 軽快 0:30</p>
+                
                 <div class="waveform">
                     <div class="waveform">
                         <div class="waveform-bar"></div>
@@ -88,8 +102,14 @@
                         <div class="waveform-bar"></div>
                     </div>
                 </div>
-                <div>
-                    <button class="play-button">▶ 聴</button>
+
+                <audio id="audio3" src="/audio/original03.mp3"></audio> 
+                <div class="audio-controls">
+                    <button class="play-pause-button" data-audio-id="audio3">▶</button>
+                    <div class="progress-container">
+                        <input type="range" class="seek-bar" value="0" min="0" max="100">
+                        <div class="time-display">0:00 / 1:30</div>
+                    </div>
                 </div>
                 <label class="radio-button">
                     <input type="radio" name="music" value="3">
@@ -98,10 +118,9 @@
             </div>
         </div>
         <div class="actions">
-            <button class="back-button">もどる</button>
+            <button type="button" class="btn btn--ghost">もどる</button>
             <button class="generate-button"><a href="../html/newproject_preview04.html">動画生成</a></button>
         </div>
     </div>
 </body>
-
 </html>
