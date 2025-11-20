@@ -1,19 +1,26 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ユーザー名を表示する要素を取得（HTML側でID: 'userNameDisplay' を設定済み）
+    // ユーザー名を表示する要素を取得
     const userNameDisplay = document.getElementById('userNameDisplay');
 
-    // セッションストレージからユーザー名（文字列）を直接取得
+    // セッションストレージから情報を取得
     const userName = sessionStorage.getItem('userName');
+    const userId = sessionStorage.getItem('userId'); 
 
-    // ユーザー名が存在する場合、画面を更新
+    // 確認用：
+    if (userId) {
+        console.log("現在のユーザーID:", userId);
+        // 今後、データベースからデータを取得する際などにこの userId を使います
+        // 例: fetch(`api/projects?userId=${userId}`) ...
+    }
+
+    // ユーザー名の表示処理
     if (userName && userNameDisplay) {
         userNameDisplay.textContent = userName;
     } else {
-        // ユーザー名がない場合
         if (userNameDisplay) {
-        userNameDisplay.textContent = 'ゲスト'; 
+            userNameDisplay.textContent = 'ゲスト'; 
         }
     }
 });

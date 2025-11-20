@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>プロジェクト一覧 | ReFeel</title>
   <!-- 正しいパスに修正（typoの styless.css は使用しない） -->
-  <link rel="stylesheet" href="../css/music_styles.css" />
+  <link rel="stylesheet" href="../css/home_styles.css" />
 </head>
 <body>
   <!-- 固定サイドバー -->
@@ -51,7 +51,7 @@
     </button>
     <div class="topbar__account">
       <img class="avatar" src="https://placehold.co/32x32" alt="春太郎" />
-      <span class="topbar__name">春太郎</span>
+     <span class="topbar__name" id="userNameDisplay"></span>
     </div>
   </header>
 
@@ -160,7 +160,33 @@
   </main>
 
   <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const userNameDisplay = document.getElementById('userNameDisplay');
+      
+      // ストレージからデータを取得
+      const userName = sessionStorage.getItem('userName');
+      const userId = sessionStorage.getItem('userId'); 
+
+    
+      if (userId) {
+          console.log("プロジェクト一覧ページ: ログイン中ID =", userId);
+      }
+
+      // 画面の名前を書き換え
+      // ユーザー名の表示処理
+    if (userName && userNameDisplay) {
+        userNameDisplay.textContent = userName;
+    } else {
+        if (userNameDisplay) {
+            userNameDisplay.textContent = 'ゲスト'; 
+        }
+    }
+});
+
+    
     // タブ切替
+    
     document.querySelectorAll('.tabs .tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.tabs .tab').forEach(b => b.classList.remove('is-active'));

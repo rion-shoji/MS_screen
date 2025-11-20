@@ -5,61 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>会員登録 | Refeel</title>
   <link rel="stylesheet" href="../css/useradd_style.css">
-  <script src="../js/register.js" defer></script>
 </head>
-
 <body>
   <div class="auth-container">
-    <!-- タイトル（白枠の外） -->
     <h2 class="register-title">会員登録</h2>
-
     <div class="auth-box">
       <div class="form-inner">
-        <form action="#" method="post">
-          <!-- 名前 -->
+        <form id="registerForm">
           <div class="form-group">
             <label for="name">名前</label>
             <input type="text" id="name" name="name" placeholder="大阪ハル" required>
           </div>
 
-          <!-- メールアドレス -->
           <div class="form-group">
             <label for="email">メールアドレス</label>
             <input type="email" id="email" name="email" placeholder="refeelmemories@ref.jp" required>
           </div>
-
           
           <div class="form-group">
-<label>性別</label>
-<div class="gender-group">
-<button type="button" class="gender-btn" data-value="male">男性</button> 
-<button type="button" class="gender-btn" data-value="female">女性</button>
-<button type="button" class="gender-btn no-answer" data-value="none">無回答</button>
-<input type="hidden" name="gender" id="gender" value="">
-</div>
-</div>
-
-          <!-- 生年月日 -->
-          <div class="form-group">
-            <label>生年月日</label>
-            <div class="birth-group">
-              <input type="number" name="year" placeholder="年" min="1900" max="2025">
-              <input type="number" name="month" placeholder="月" min="1" max="12">
-              <input type="number" name="day" placeholder="日" min="1" max="31">
+            <label>性別</label>
+            <div class="gender-group">
+              <button type="button" class="gender-btn" data-value="男性">男性</button> 
+              <button type="button" class="gender-btn" data-value="女性">女性</button>
+              <button type="button" class="gender-btn no-answer" data-value="無回答">無回答</button>
+              <input type="hidden" name="gender" id="gender" value="">
             </div>
           </div>
 
-          <!-- パスワード -->
+          <div class="form-group">
+            <label>生年月日</label>
+            <div class="birth-group">
+              <input type="number" id="year" placeholder="年" required>
+              <input type="number" id="month" placeholder="月" required>
+              <input type="number" id="day" placeholder="日" required>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="password">パスワード</label>
             <input type="password" id="password" name="password" placeholder="refeeeel0111" required>
           </div>
 
-          <!-- 送信ボタン -->
-          <button type="submit" class="btn btn-primary"><a href="../html/user_confirm03.html">同意して確認画面に進む</a></button>
+          <button type="submit" class="btn btn-primary">同意して確認画面に進む</button>
         </form>
       </div>
     </div>
   </div>
-</body>
-</html>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      
+      // ▼▼▼▼▼▼▼▼▼▼ 固定値セット（テスト用） ▼▼▼▼▼▼▼▼▼▼
+      document.getElementById('name').value = "大阪 春太郎";
+      document.getElementById('email').value = "halhal@ohs.hal.ac.jp";
+      document.getElementById('year').value = "2000";
+      document.getElementById('month').value = "8";
+      document.getElementById('day').value = "9";
+      document.getElementById('password').value = "osakahalhaltaro";
+
+      // プログラムで「男性ボタン」をクリックさせる
+      const maleBtn = document.querySelector('.gender-btn[data-value="男性"]');
+      if (maleBtn) {
+          maleBtn.click(); 
+      }
+      // ▲▲▲▲▲▲▲▲▲▲ 固定値セットここまで ▲▲▲▲▲▲▲▲▲▲
+
+
+      // ▼▼▼ 性別ボタンの処理（ ▼▼▼
+      const genderBtns = document.querySelectorAll('.gender-btn');
+      const genderInput = document.getElementById('gender');
+
+      genderBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+              // 1. 全員の 'active' クラスを外す
+              genderBtns.forEach(b => b.classList.remove('active')); 
+              
+              // 2. クリックされたボタンだけに 'active' クラスをつける
+              
+              btn.classList.add('active'); 
+              
+              // 3. 値をセット
+              genderInput.value = btn.dataset.value;
+          });
+      });
+      
+
+      
+      // 送信処理
+      document.getElementById('registerForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          sessionStorage.setItem('reg_name', document.getElementById('name').value);
+          sessionStorage.setItem('reg_email', document.getElementById('email').value);
+          sessionStorage.setItem('reg_gender', document.getElementById('gender').value || '未選択');
+          
+          const birthDate = document.getElementById('year').value + '年 ' + 
+                            document.getElementById('month').value + '月 ' + 
+                            document.getElementById('day').value + '日';
+          sessionStorage.setItem('reg_birth', birthDate);
+          
+          sessionStorage.setItem('reg_password', document.getElementById('password').value);
+
+          window.location.href = 'user_confirm03.html';
+      });
+  });
+</script>

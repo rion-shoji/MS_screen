@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="../css/newproject.css" />
 </head>
 
+<!-- ユーザーID -->
+      <div class="card__header-account">
+      <span class="username" id="userNameDisplay"></span>
+      </div>
+      
 <body>
   <main class="page">
     <section class="card">
@@ -72,3 +77,30 @@
 </body>
 
 </html>
+
+
+ <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const userNameDisplay = document.getElementById('userNameDisplay');
+      
+      // ストレージからデータを取得
+      // const userName = sessionStorage.getItem('userName');
+      const userId = sessionStorage.getItem('userId'); 
+
+    
+      if (userId) {
+          console.log("プロジェクト新規: ログイン中ID =", userId);
+      }
+
+    //   // 画面の名前を書き換え
+    //   // ユーザー名の表示処理
+    // if (userName && userNameDisplay) {
+    //     userNameDisplay.textContent = userName;
+    // } else {
+    //     if (userNameDisplay) {
+    //         userNameDisplay.textContent = 'ゲスト'; 
+    //     }
+    // }
+});
+</script>
