@@ -25,7 +25,7 @@
         /* ページタイトル (調整部分) */
         .page-title {
             margin: 24px 0 30px 24px; /* 上マージンを増やしてパンくずから離す。下マージンを増やしてフォームから離す */
-            color: var(--primary); 
+            
             font-size: 32px; /* フォントサイズを大きく */
             font-weight: 700;
             letter-spacing: 0.02em;
@@ -235,8 +235,10 @@
             height: 40px;
             border-radius: 10px;
             border: 1.5px solid var(--border);
-            background: #ED8C86;
+            background: var(--card); /* 白系の背景色に設定 */
+            color: var(--text); /* 通常時の文字色をデフォルトのテキスト色に戻す */
             box-shadow: var(--shadow-sm);
+            
             cursor: pointer;
             font-size: 16px;
             color: var(--text);
