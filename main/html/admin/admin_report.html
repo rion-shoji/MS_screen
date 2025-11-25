@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reports</title>
+    <title>Reports - ReFeel Admin</title>
+    <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="../../css/report.css">
 </head>
 <body>
     <div class="dashboard-layout">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="logo-icon">
-                    <!-- Placeholder for logo icon -->
                     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="15" cy="15" r="14" stroke="white" stroke-width="2"/>
                         <circle cx="10" cy="10" r="5" fill="white"/>
@@ -20,57 +19,24 @@
                         <circle cx="15" cy="20" r="5" fill="white"/>
                     </svg>
                 </div>
-                <h2 class="app-title">ReFeel-Management</h2>
+                <h2 class="app-title">ReFeel 管理</h2>
             </div>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="admin_home.html">
-                            <span class="icon">🏠</span> 
-                            <span>ホーム</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="admin_.html">
-                            <span class="icon">👨‍💼</span> 
-                            <span>管理者</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="admin_video.html">
-                            <span class="icon">🎬</span> 
-                            <span>動画一覧</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="admin_report.html">
-                            <span class="icon">💰</span>
-                            <span>統計</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#settings">
-                            <span class="icon">⚙️</span> 
-                            <span>設定</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#features">
-                            <span class="icon">✨</span> 
-                            <span>特徴</span>
-                            <span class="new-badge">NEW</span>
-                        </a>
-                    </li>
+                    <li class="nav-item"><a href="admin_home.html"><span class="icon">🏠</span><span>ホーム</span></a></li>
+                    <li class="nav-item"><a href="admin_.html"><span class="icon">👨‍💼</span><span>管理者</span></a></li>
+                    <li class="nav-item"><a href="admin_userlist.html"><span class="icon">👥</span><span>顧客</span></a></li>
+                    <li class="nav-item active"><a href="admin_report.html"><span class="icon">💰</span><span>統計</span></a></li>
+                    <li class="nav-item"><a href="#settings"><span class="icon">⚙️</span><span>設定</span></a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <header class="content-header-bar">
-                <div class="header-title-group">
+            <header class="header-bar">
+                <div class="header-title">
                     <h1>レポートと統計</h1>
-                    <p class="subtitle">運用・品質・安全の要点を集約</p>
+                    <!-- <p class="subtitle" style="font-size: 14px; color: #718096; margin-top: 4px; font-weight: 400;">運用・品質・安全の要点を集約</p> -->
                 </div>
                 <div class="header-actions">
                     <span class="notification-icon">🔔</span>
@@ -79,97 +45,110 @@
             </header>
 
             <div class="content-wrapper">
-                <div class="period-selector">
-                    <span>期間: 過去30日</span>
-                    <button class="btn btn-secondary">前期間と比較</button>
-                    <button class="btn btn-primary">エクスポート</button>
+                
+                <div class="period-selector-bar">
+                    <div class="period-label">
+                        <span>対象期間:</span>
+                        <strong>過去30日</strong>
+                    </div>
+                    <div class="period-actions">
+                        <button class="btn btn-secondary">前期間と比較</button>
+                        <button class="btn btn-primary">レポートをDL</button>
+                    </div>
                 </div>
 
                 <div class="summary-cards-grid">
                     <div class="summary-card">
                         <div class="card-label">入稿数</div>
                         <div class="card-value">1,240</div>
-                        <div class="change positive">+12%</div>
+                        <div class="change positive">
+                            <span class="arrow">↑</span> +12%
+                        </div>
                     </div>
                     <div class="summary-card">
                         <div class="card-label">公開数</div>
                         <div class="card-value">1,010</div>
-                        <div class="change positive">+9%</div>
+                        <div class="change positive">
+                            <span class="arrow">↑</span> +9%
+                        </div>
                     </div>
                     <div class="summary-card">
                         <div class="card-label">SLA遵守率</div>
                         <div class="card-value">96.2%</div>
-                        <div class="change positive">+1.3pt</div>
+                        <div class="change positive">
+                            <span class="arrow">↑</span> +1.3pt
+                        </div>
                     </div>
                     <div class="summary-card">
                         <div class="card-label">エンコード失敗率</div>
                         <div class="card-value">1.8%</div>
-                        <div class="change negative">-0.6pt</div>
+                        <div class="change negative">
+                            <span class="arrow">↓</span> -0.6pt (改善)
+                        </div>
                     </div>
                 </div>
 
                 <div class="charts-grid">
-                    <!-- Daily Trend Chart -->
                     <section class="chart-section daily-trend">
                         <h2>日次トレンド (入稿・公開)</h2>
                         <div class="chart-container">
-                            <!-- Placeholder for chart. Could be SVG or canvas element -->
                             <div class="trend-chart">
                                 <div class="axis y-axis">
-                                    <span class="value">150</span>
-                                    <span class="value">100</span>
-                                    <span class="value">50</span>
-                                    <span class="value">0</span>
+                                    <span>150</span>
+                                    <span>100</span>
+                                    <span>50</span>
+                                    <span>0</span>
                                 </div>
                                 <div class="chart-lines">
-                                    <svg width="100%" height="150" viewBox="0 0 500 150" preserveAspectRatio="none">
-                                        <!-- Line 1: Uploads -->
-                                        <path d="M10 140 Q 100 120 180 80 T 280 40 T 380 60 T 480 100" stroke="#0066ff" stroke-width="2" fill="none" />
-                                        <!-- Line 2: Published -->
-                                        <path d="M10 130 Q 100 110 180 70 T 280 30 T 380 50 T 480 90" stroke="#38a169" stroke-width="2" fill="none" />
+                                    <svg width="100%" height="100%" viewBox="0 0 500 150" preserveAspectRatio="none">
+                                        <line x1="0" y1="37.5" x2="500" y2="37.5" stroke="#edf2f7" stroke-width="1" />
+                                        <line x1="0" y1="75" x2="500" y2="75" stroke="#edf2f7" stroke-width="1" />
+                                        <line x1="0" y1="112.5" x2="500" y2="112.5" stroke="#edf2f7" stroke-width="1" />
+
+                                        <path d="M0 140 Q 50 120 100 80 T 200 40 T 300 60 T 400 30 T 500 50" stroke="#0066ff" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/>
+                                        <path d="M0 145 Q 50 130 100 90 T 200 60 T 300 80 T 400 50 T 500 70" stroke="#38a169" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/>
                                     </svg>
                                 </div>
-                                <div class="axis x-axis">
-                                    <span class="date">6/1</span>
-                                    <span class="date">6/2</span>
-                                    <span class="date">6/3</span>
-                                    <span class="date">6/4</span>
-                                    <span class="date">6/5</span>
-                                    <span class="date">6/6</span>
-                                    <span class="date">6/7</span>
-                                    <span class="date">6/8</span>
-                                </div>
+                            </div>
+                            <div class="axis x-axis">
+                                <span>6/1</span>
+                                <span>6/2</span>
+                                <span>6/3</span>
+                                <span>6/4</span>
+                                <span>6/5</span>
+                                <span>6/6</span>
+                                <span>6/7</span>
+                                <span>6/8</span>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Violation Type Bar Chart -->
                     <section class="chart-section violation-type">
                         <h2>違反タイプ別 (件数)</h2>
                         <div class="bar-chart-container">
                             <div class="bar-item">
                                 <span class="label">著作権</span>
-                                <div class="bar" style="width: 80%;"></div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 80%; background-color: #e53e3e;"></div></div>
                                 <span class="value">80</span>
                             </div>
                             <div class="bar-item">
                                 <span class="label">暴力</span>
-                                <div class="bar" style="width: 55%;"></div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 55%; background-color: #dd6b20;"></div></div>
                                 <span class="value">55</span>
                             </div>
                             <div class="bar-item">
                                 <span class="label">センシティ</span>
-                                <div class="bar" style="width: 30%;"></div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 30%; background-color: #d69e2e;"></div></div>
                                 <span class="value">30</span>
                             </div>
                             <div class="bar-item">
                                 <span class="label">スパム</span>
-                                <div class="bar" style="width: 20%;"></div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 20%; background-color: #718096;"></div></div>
                                 <span class="value">20</span>
                             </div>
                             <div class="bar-item">
                                 <span class="label">その他</span>
-                                <div class="bar" style="width: 10%;"></div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 10%; background-color: #cbd5e0;"></div></div>
                                 <span class="value">10</span>
                             </div>
                         </div>
@@ -177,104 +156,93 @@
                 </div>
 
                 <div class="lower-charts-grid">
-                    <!-- Funnel Chart -->
                     <section class="chart-section funnel">
                         <h2>公開までのファネル</h2>
                         <div class="funnel-items">
                             <div class="funnel-item">
                                 <span class="label">アップロード</span>
-                                <div class="bar" style="width: 95%;"></div>
-                                <span class="value">1200</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 100%; opacity: 1;"></div></div>
+                                <span class="value">1,200</span>
                             </div>
                             <div class="funnel-item">
                                 <span class="label">処理開始</span>
-                                <div class="bar" style="width: 90%;"></div>
-                                <span class="value">1140</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 95%; opacity: 0.9;"></div></div>
+                                <span class="value">1,140</span>
                             </div>
                             <div class="funnel-item">
                                 <span class="label">処理成功</span>
-                                <div class="bar" style="width: 85%;"></div>
-                                <span class="value">1030</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 85%; opacity: 0.8;"></div></div>
+                                <span class="value">1,030</span>
                             </div>
                             <div class="funnel-item">
                                 <span class="label">レビュー通過</span>
-                                <div class="bar" style="width: 70%;"></div>
+                                <div class="bar-track"><div class="bar-fill" style="width: 72%; opacity: 0.7;"></div></div>
                                 <span class="value">870</span>
                             </div>
                             <div class="funnel-item">
-                                <span class="label">公開</span>
-                                <div class="bar" style="width: 60%;"></div>
+                                <span class="label">公開完了</span>
+                                <div class="bar-track"><div class="bar-fill" style="width: 60%; opacity: 0.6;"></div></div>
                                 <span class="value">720</span>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Cohort Grid Chart -->
                     <section class="chart-section cohort">
                         <h2>週次コホート (完走率%)</h2>
-                        <div class="cohort-grid">
-                            <!-- Rows represent weeks, columns represent cohorts -->
-                            <div class="cohort-row">
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell"></div>
+                        <div class="cohort-grid-wrapper">
+                            <div class="cohort-grid">
+                                <div class="cohort-row">
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell c-100"></div>
+                                    <div class="cohort-cell c-80"></div>
+                                    <div class="cohort-cell c-60"></div>
+                                    <div class="cohort-cell c-40"></div>
+                                    <div class="cohort-cell c-20"></div>
+                                </div>
+                                <div class="cohort-row">
+                                    <div class="cohort-cell c-100"></div>
+                                    <div class="cohort-cell c-90"></div>
+                                    <div class="cohort-cell c-70"></div>
+                                    <div class="cohort-cell c-50"></div>
+                                    <div class="cohort-cell c-30"></div>
+                                    <div class="cohort-cell empty"></div>
+                                </div>
+                                <div class="cohort-row">
+                                    <div class="cohort-cell c-100"></div>
+                                    <div class="cohort-cell c-90"></div>
+                                    <div class="cohort-cell c-80"></div>
+                                    <div class="cohort-cell c-60"></div>
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell empty"></div>
+                                </div>
+                                <div class="cohort-row">
+                                    <div class="cohort-cell c-100"></div>
+                                    <div class="cohort-cell c-95"></div>
+                                    <div class="cohort-cell c-85"></div>
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell empty"></div>
+                                </div>
+                                <div class="cohort-row">
+                                    <div class="cohort-cell c-100"></div>
+                                    <div class="cohort-cell c-95"></div>
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell empty"></div>
+                                    <div class="cohort-cell empty"></div>
+                                </div>
                             </div>
-                            <div class="cohort-row">
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell light-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell"></div>
-                            </div>
-                            <div class="cohort-row">
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell light-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell"></div>
-                            </div>
-                            <div class="cohort-row">
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell light-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell"></div>
-                            </div>
-                            <div class="cohort-row">
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell light-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell"></div>
-                            </div>
-                            <div class="cohort-row">
-                                <div class="cohort-cell"></div>
-                                <div class="cohort-cell light-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell medium-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell dark-purple"></div>
-                                <div class="cohort-cell"></div>
+                            <div class="cohort-legend">
+                                <span>Low</span>
+                                <div class="legend-bar"></div>
+                                <span>High</span>
                             </div>
                         </div>
                     </section>
                 </div>
+
             </div>
         </main>
     </div>
-
-    <script src="../../js/report.js"></script>
 </body>
 </html>

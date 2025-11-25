@@ -74,3 +74,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/* script.js */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const layoutContainer = document.querySelector('.table-and-details-layout');
+    const tableRows = document.querySelectorAll('.data-table tbody tr');
+    const detailsPanel = document.getElementById('user-details-panel');
+    const closeBtn = document.getElementById('close-panel-btn');
+
+    // 行をクリックした時の処理
+    tableRows.forEach(row => {
+        row.addEventListener('click', function() {
+            // 選択状態の切り替え
+            tableRows.forEach(r => r.classList.remove('selected'));
+            this.classList.add('selected');
+
+            // 1. まずレイアウトを変更してパネルの枠を作る (display: blockにする)
+            layoutContainer.classList.add('is-open');
+
+            // 2. パネルを一度透明に戻す（連続クリック時のリセット用）
+            detailsPanel.classList.remove('active');
+
+            // 3. 少し待ってから「ふわっ」とさせる (display反映待ち)
+            setTimeout(() => {
+                detailsPanel.classList.add('active');
+            }, 50);
+            
+            // ★ここで詳細データを書き換える処理を入れる
+            // updateUserDetails(this.dataset.userId); 
+        });
+    });
+
+    // 閉じるボタンをクリックした時の処理
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            // パネルを消す
+            detailsPanel.classList.remove('active');
+            
+            // 選択解除
+            tableRows.forEach(r => r.classList.remove('selected'));
+
+            // 少し待ってからレイアウトを元に戻す（アニメーション余韻）
+            setTimeout(() => {
+                layoutContainer.classList.remove('is-open');
+            }, 200);
+        });
+    }
+});

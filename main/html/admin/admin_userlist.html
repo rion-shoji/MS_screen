@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User List</title>
+      <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="../../css/userlist.css">
+    
 </head>
 <body>
     <div class="dashboard-layout">
@@ -48,25 +50,25 @@
                             <span>統計</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="admin_video.html">
-                            <span class="icon">🎬</span> <!-- Exams Icon -->
+                            <span class="icon">🎬</span>
                             <span>動画一覧</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#settings">
-                            <span class="icon">⚙️</span> <!-- Settings Icon -->
+                            <span class="icon">⚙️</span> 
                             <span>設定</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#features">
-                            <span class="icon">✨</span> <!-- Features Icon -->
+                            <span class="icon">✨</span> 
                             <span>特徴</span>
                             <span class="new-badge">NEW</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
         </aside>
@@ -105,7 +107,7 @@
                         <input type="text" id="search-input" placeholder="Search for a user by name or email">
                     </div>
                 </div>
-
+                
                 <div class="table-and-details-layout">
                     <div class="table-container">
                         <table class="data-table">
@@ -217,6 +219,7 @@
                     
                     <!-- User Details Panel -->
                     <div id="user-details-panel" class="user-details-panel">
+                        <button id="close-panel-btn" class="close-btn">×</button>
                         <div class="panel-header">
                             <div class="user-id-tag">1000520</div>
                             <div class="user-avatar-large">
@@ -278,6 +281,6 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../../js/admin.js"></script>
 </body>
 </html>
