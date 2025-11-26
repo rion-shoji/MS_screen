@@ -11,13 +11,13 @@
   <!-- 固定サイドバー -->
   <aside class="sidebar">
     <div class="sidebar__brand">
-      <img class="sidebar__logo" src="../img/refeel001.png" alt="ReFeel" />
-      <div class="sidebar__tagline">あの日 あの時 あの場所で</div>
+      <img class="sidebar__logo" src="../img/refeel003.png" alt="ReFeel" />
+      
     </div>
 
-    <button class="btn btn--primary sidebar__new"><a href="../html/newproject_mode01.html">
-      <span class="icon">＋</span> 新規作成</a>
-    </button>
+    <button class="btn btn--primary sidebar__new" onclick="location.href='../html/newproject_mode01.html'">
+  <span class="icon">＋</span> 新規作成
+</button>
 
     <nav class="sidebar__nav" aria-label="サイドメニュー">
       <div class="nav-group">
@@ -44,11 +44,19 @@
     <button class="topbar__sort" title="並び替え">
       <span class="icon">↔</span> 並び替え
     </button>
+    
     <div class="topbar__account">
-      <img class="avatar" src="https://placehold.co/32x32" alt="春太郎" />
-     <span class="topbar__name" id="userNameDisplay"></span>
+    <img class="avatar" src="https://placehold.co/32x32" alt="春太郎" />
+    <span class="topbar__name" id="userNameDisplay">春太郎</span>
+
+    <div class="account-menu">
+      <a href="../html/user_info05.html" class="account-menu__item">登録情報</a>
+      <hr class="account-menu__line"> <a href="../html/user_login01.html" class="account-menu__item account-menu__item--logout">ログアウト</a>
+    
     </div>
   </header>
+
+
 
   <!-- コンテンツ -->
   <main class="main">

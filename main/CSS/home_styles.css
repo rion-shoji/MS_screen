@@ -63,15 +63,15 @@ img{ max-width:100%; display:block; }
 }
 
 /* ---------- Sidebar ---------- */
-.sidebar__brand{ display:flex; flex-direction:column; gap:6px; }
-.sidebar__logo{ width:140px; height:auto; }
+.sidebar__brand{ display:flex; flex-direction:column; gap:6px; align-items: center;}
+.sidebar__logo{ width:160px; height:auto; margin-bottom: 20px ;}
 .sidebar__tagline{ color:var(--muted); font-size:12px; }
 .sidebar__new{ width:100%; }
 
 .sidebar__nav{ margin-top:8px; }
 .nav-group__toggle{
   width:100%; text-align:left; background:none; border:0; padding:6px 8px;
-  color:var(--muted); cursor:pointer; border-radius:8px;
+  color:var(--muted); cursor:pointer; border-radius:8px; 
 }
 .nav-group__toggle .icon{ display:inline-block; margin-right:6px; transform:rotate(90deg); }
 
@@ -102,7 +102,73 @@ img{ max-width:100%; display:block; }
   border:1px solid var(--border); background:#fff;
   border-radius:8px; padding:6px 10px; cursor:pointer;
 }
-.topbar__account{ display:flex; align-items:center; gap:8px; margin-left:8px; }
+/* 登録情報 */
+/* ---------- User Dropdown Menu ---------- */
+
+/* 1. ユーザーアイコンエリアの基準設定 */
+.topbar__account {
+  position: relative; /* メニューをここにひっつける */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  cursor: pointer;    /* 手の形アイコンにする */
+  padding: 4px;
+}
+
+/* 2. ドロップダウンメニュー（枠）のデザイン */
+.account-menu {
+  display: none;          /* 最初は隠す */
+  position: absolute;     /* 浮いている配置にする */
+  top: 100%;              /* アイコンの真下に配置 */
+  right: 0;               /* 右端を揃える */
+  
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ふんわりした影 */
+  
+  width: 140px;           /* メニューの幅 */
+  padding: 6px 0;         /* 上下の余白 */
+  z-index: 100;           /* 他の要素より手前に出す */
+}
+
+/* 3. マウスを乗せた時にメニューを表示 */
+.topbar__account:hover .account-menu {
+  display: block;
+}
+
+/* 4. メニュー内の各リンク */
+.account-menu__item {
+  display: block;
+  padding: 8px 16px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+/* リンクにマウスを乗せた時の色 */
+.account-menu__item:hover {
+  background-color: #f2f6fb;
+  color: var(--brand-ink);
+}
+
+/* 5. ログアウトだけ文字を赤っぽくする（任意） */
+.account-menu__item--logout {
+  color: #d9534f;
+}
+.account-menu__item--logout:hover {
+  background-color: #fff5f5;
+  color: #c9302c;
+}
+
+/* 6. 区切り線 */
+.account-menu__line {
+  margin: 4px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
 .avatar{ width:32px; height:32px; border-radius:50%; }
 .topbar__name{ color:var(--muted); }
 
@@ -229,6 +295,16 @@ img{ max-width:100%; display:block; }
   box-shadow:0 10px 26px rgba(0,0,0,.06);
   border:1px solid var(--border);
   margin:8px 0 24px;
+  /* ▼▼▼ これを追加して、クリックできる指マークにする ▼▼▼ */
+  cursor: pointer;
+  
+  /* オプション：マウスを乗せた時に少し変化をつける */
+  transition: opacity 0.2s;
+}
+
+/* マウスを乗せた時に少し薄くする */
+.home-hero:hover {
+  opacity: 0.9;
 }
 .home-section{
   background:#fff; border:1px solid var(--border); border-radius:16px;
