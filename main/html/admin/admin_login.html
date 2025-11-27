@@ -4,53 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReFeel - 管理者用ログイン</title>
-<link rel="stylesheet" href="../../css/admin_login.css">
+    <link rel="stylesheet" href="../../css/admin_login.css">
 </head>
 <body>
     <div class="login-container">
         <h1 class="logo">ReFeel</h1>
         <h2 class="subtitle">管理者用</h2>
-        
+
         <form id="loginForm">
             <div class="form-group">
                 <label for="username">アカウント名</label>
-                <input 
-                    type="text" 
-                    id="username" 
-                    name="username" 
-                    placeholder="refeelsan"
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="admin"
                     required
                 >
             </div>
-            
+
             <div class="form-group">
                 <label for="password">パスワード</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="halmiraisouzou"
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="********"
                     required
                 >
             </div>
-            
+
             <button type="submit" class="login-button">ログイン</button>
         </form>
     </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            // Add your authentication logic here
-            console.log('Login attempt:', { username, password });
-            
-            // Example: redirect after successful login
-            // window.location.href = '/dashboard';
-        });
-    </script>
+    <script src="../../js/admin_login.js"></script>
 </body>
 </html>
