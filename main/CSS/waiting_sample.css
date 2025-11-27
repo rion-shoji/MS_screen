@@ -1,0 +1,135 @@
+/* css/loading_style.css */
+@charset "UTF-8";
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* スクロール禁止 */
+    background: #1a1a2e; /* 宇宙っぽい深い色、またはブランドカラー */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.loading-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* --- 背景の写真アニメーション --- */
+.floating-photos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none; /* 写真をクリックできないようにする */
+}
+
+/* JSで生成される写真要素のスタイル */
+.float-item {
+    position: absolute;
+    bottom: -150px; /* 画面外からスタート */
+    padding: 10px 10px 30px 10px; /* ポラロイド風の余白 */
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    opacity: 0;
+    animation: floatUp linear forwards;
+}
+
+.float-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* 正方形にトリミング表示 */
+    border: 1px solid #eee;
+}
+
+/* 下から上へ浮かび上がるアニメーション */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(var(--rotate-end)) scale(1.1);
+        opacity: 0;
+    }
+}
+
+/* --- 中央のテキスト・ロゴ演出 --- */
+.loading-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4); /* 背景を少し暗くして文字を見やすく */
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spinner-core {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #8bd5e2, #f4a7d8);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(51, 51, 255, 0.6);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.logo-mark {
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.loading-text {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.loading-text span {
+    animation: blink 1.4s infinite both;
+}
+.loading-text span:nth-child(2) { animation-delay: 0.2s; }
+.loading-text span:nth-child(3) { animation-delay: 0.4s; }
+
+.sub-text {
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(51, 51, 255, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(51, 51, 255, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(51, 51, 255, 0); }
+}
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
