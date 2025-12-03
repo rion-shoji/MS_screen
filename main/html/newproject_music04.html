@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Selection</title>
+    <link rel="stylesheet" href="../css/music_generation.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="card music">
+
+            <nav class="breadcrumb" aria-label="パンくず">
+                <a href="../html/home.html" class="breadcrumb__link">ホーム</a>
+                <span class="breadcrumb__sep">›</span>
+                <a href="../html/newproject_mode01.html" class="breadcrumb__link">新規作成</a>
+                <span class="breadcrumb__sep">›</span>
+                <a href="../html/newproject_photo02.html" class="breadcrumb__link">写真選択</a>
+                <span class="breadcrumb__sep">›</span>
+                <a href="../html/newproject_musicoption03.html" class="breadcrumb__link">音楽オプション</a>
+                <span class="breadcrumb__sep">›</span>
+                <span class="breadcrumb__current">音楽選択</span>
+            </nav>
+
+            <header class="hero">
+                <h1 class="hero__title">音楽オプション</h1>
+            </header>
+
+            <div class="music-options">
+                <div class="music-card">
+                    <h3>オリジナル #01</h3>
+                    
+                    <div class="waveform">
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                    </div>
+                    
+                    <audio id="audio1" src="/audio/original01.mp3"></audio> 
+                    <div class="audio-controls">
+                        <button class="play-pause-button" data-audio-id="audio1">▶</button>
+                        <div class="progress-container">
+                            <input type="range" class="seek-bar" value="0" min="0" max="100">
+                            <div class="time-display">0:00 / 1:30</div>
+                        </div>
+                    </div>
+                    <label class="radio-button">
+                        <input type="radio" name="music" value="1" checked>
+                        <span>この曲を使う</span>
+                    </label>
+                </div>
+                
+                <div class="music-card">
+                    <h3>オリジナル #02</h3>
+                    <div class="waveform">
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                    </div>
+                    <audio id="audio2" src="/audio/original02.mp3"></audio> 
+                    <div class="audio-controls">
+                        <button class="play-pause-button" data-audio-id="audio2">▶ </button>
+                        <div class="progress-container">
+                            <input type="range" class="seek-bar" value="0" min="0" max="100">
+                            <div class="time-display">0:00 / 1:30</div>
+                        </div>
+                    </div>
+                    <label class="radio-button">
+                        <input type="radio" name="music" value="2">
+                        <span>この曲を使う</span>
+                    </label>
+                </div>
+                
+                <div class="music-card">
+                    <h3>オリジナル #03</h3>
+                    <div class="waveform">
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                        <div class="waveform-bar"></div>
+                    </div>
+                    <audio id="audio3" src="/audio/original03.mp3"></audio> 
+                    <div class="audio-controls">
+                        <button class="play-pause-button" data-audio-id="audio3">▶</button>
+                        <div class="progress-container">
+                            <input type="range" class="seek-bar" value="0" min="0" max="100">
+                            <div class="time-display">0:00 / 1:30</div>
+                        </div>
+                    </div>
+                    <label class="radio-button">
+                        <input type="radio" name="music" value="3">
+                        <span>この曲を使う</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button type="button" class="btn btn--ghost" onclick="history.back()">もどる</button>
+                <button class="btn btn--primary"><a href="../html/newproject_preview05.html" style="color:white; text-decoration:none;">動画生成</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

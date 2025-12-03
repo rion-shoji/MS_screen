@@ -1,0 +1,340 @@
+@charset "UTF-8";
+
+/* =========================================
+   Master-Detail Layout Container
+   ========================================= */
+
+/* リストと詳細パネルを包むコンテナ */
+.master-detail-container {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start; /* 詳細パネルの高さが足りない場合に引き伸ばさない */
+    position: relative;
+    /* トランジションの設定 (滑らかなアニメーション用) */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    min-height: 500px; /* 最小高さを確保 */
+}
+
+/* -----------------------------------------
+   1. List Pane (左側: 動画一覧リスト)
+   ----------------------------------------- */
+.list-pane {
+    flex: 1; /* 初期状態では全幅 (100%) を占有 */
+    transition: flex 0.3s ease, max-width 0.3s ease;
+    min-width: 0; /* Flexboxの子要素が正しく縮小するために必要 */
+    
+    /* common.css の .table-container と同等のスタイルを維持しつつ、
+       アニメーション時にスムーズに動くように調整 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* -----------------------------------------
+   2. Detail Pane (右側: 詳細パネル)
+   ----------------------------------------- */
+.detail-pane {
+    /* --- 初期状態 (非表示) --- */
+    width: 0;
+    flex-basis: 0;      /* 幅を強制的にゼロにする */
+    opacity: 0;         /* 透明 */
+    overflow: hidden;   /* コンテンツを隠す */
+    margin-left: 0;
+    padding: 0;
+    border-width: 0;    /* ボーダーも消す */
+
+    /* --- スタイル --- */
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-style: solid;
+    border-color: #e2e8f0;
+    
+    /* スクロール追従のような挙動にしたい場合 */
+    position: sticky;
+    top: 0;
+    /* パネル内のスクロールを許可 */
+    max-height: calc(100vh - 150px); 
+    overflow-y: auto; 
+
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* -----------------------------------------
+   3. Active State (行クリック時の変化)
+   ----------------------------------------- */
+/* JavaScriptで .master-detail-container に .details-active が付与された時の挙動 */
+
+.master-detail-container.details-active .list-pane {
+    flex: 0 0 60%; /* リスト幅を60%に固定・縮小 */
+    max-width: 60%;
+}
+
+.master-detail-container.details-active .detail-pane {
+    flex: 1;       /* 残りのスペース (約40%) を埋める */
+    width: auto;
+    opacity: 1;
+    padding: 24px;
+    border-width: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-left: 0; /* 必要に応じて調整 */
+}
+
+/* =========================================
+   Data Table Overrides (common.cssの上書き)
+   ========================================= */
+/* common.css では UserList 用に列幅が固定されているため、
+   動画リスト用に幅を調整する必要があります。
+   HTML側で <table class="data-table video-table-override"> と指定してください。
+*/
+
+.video-table-override {
+    table-layout: fixed; /* 列幅固定モード */
+}
+
+/* 1列目: サムネイル (UserListのアバターより少し広く) */
+.video-table-override th:nth-child(1),
+.video-table-override td:nth-child(1) {
+    width: 90px;
+    padding-left: 16px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+/* 2列目: タイトル (メイン情報なので可変長または広く取る) */
+.video-table-override th:nth-child(2),
+.video-table-override td:nth-child(2) {
+    width: auto; /* 残りのスペースを使う */
+    font-weight: 500;
+    color: #2d3748;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 3列目: 再生時間 */
+.video-table-override th:nth-child(3),
+.video-table-override td:nth-child(3) {
+    width: 15%; /* 狭くて良い */
+}
+
+/* 4列目: 作成日 */
+.video-table-override th:nth-child(4),
+.video-table-override td:nth-child(4) {
+    width: 20%;
+}
+
+/* 5列目: ステータス */
+.video-table-override th:nth-child(5),
+.video-table-override td:nth-child(5) {
+    width: 120px;
+}
+
+/* 6列目: アクション (⋮) */
+.video-table-override th:nth-child(6),
+.video-table-override td:nth-child(6) {
+    width: 50px;
+    text-align: center;
+}
+
+/* --- テーブル内パーツ --- */
+
+/* 動画サムネイルプレースホルダー */
+.video-thumb-placeholder {
+    width: 70px;
+    height: 40px;
+    background-color: #cbd5e0;
+    border-radius: 4px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+/* 簡易的な再生マーク装飾 */
+.video-thumb-placeholder::after {
+    content: '▶';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255,255,255,0.7);
+    font-size: 10px;
+}
+
+/* ステータスバッジ */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.status-badge.published {
+    background-color: #38a169; /* Green */
+}
+.status-badge.draft {
+    background-color: #a0aec0; /* Grey */
+}
+.status-badge.processing {
+    background-color: #d69e2e; /* Yellow/Orange */
+}
+
+/* =========================================
+   Detail Pane Contents (詳細パネルの中身)
+   ========================================= */
+
+/* ヘッダーエリア */
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.detail-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.4;
+    margin-right: 10px;
+}
+
+.close-detail-btn {
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: color 0.2s, background-color 0.2s;
+}
+.close-detail-btn:hover {
+    color: #4a5568;
+    background-color: #edf2f7;
+}
+
+/* 動画プレーヤーエリア */
+.video-player-area {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* アスペクト比固定 */
+    background-color: #2d3748;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-placeholder {
+    color: white;
+    text-align: center;
+}
+.player-placeholder span {
+    display: block;
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 8px;
+}
+.player-placeholder::before {
+    content: '▶';
+    display: block;
+    font-size: 48px;
+    opacity: 0.9;
+    margin-bottom: 4px;
+}
+
+/* 情報リスト */
+.detail-info {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 1px solid #edf2f7;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    font-size: 14px;
+}
+.info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.info-row:first-child {
+    padding-top: 0;
+}
+
+.info-row .label {
+    color: #718096;
+    font-weight: 500;
+}
+.info-row .value {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* アクションボタン群 */
+.detail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 特殊なボタン（削除用など） */
+.btn-danger-outline {
+    background-color: transparent;
+    color: #e53e3e;
+    border: 1px solid #e53e3e;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s;
+    text-align: center;
+}
+.btn-danger-outline:hover {
+    background-color: #fff5f5;
+}
+
+/* =========================================
+   Responsive (モバイル対応)
+   ========================================= */
+
+@media (max-width: 1024px) {
+    /* タブレット・スマホ: 横並び解除 */
+    .master-detail-container.details-active {
+        flex-direction: column;
+    }
+
+    /* リストは高さを制限してスクロールさせる */
+    .master-detail-container.details-active .list-pane {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+        height: 300px; /* リストが見える高さを確保 */
+        overflow-y: auto;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* 詳細パネルは下に表示 */
+    .master-detail-container.details-active .detail-pane {
+        width: 100%;
+        height: auto;
+        border-left: none;
+        border-top: 1px solid #e2e8f0;
+        box-shadow: none;
+        position: static; /* スティッキー解除 */
+        padding: 20px 0; /* 横パディングを減らす */
+        border: none;
+    }
+}

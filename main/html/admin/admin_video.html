@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <link rel="stylesheet" href="../../css/video.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <!-- Placeholder for logo icon -->
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="15" cy="15" r="14" stroke="white" stroke-width="2"/>
+                        <circle cx="10" cy="10" r="5" fill="white"/>
+                        <circle cx="20" cy="10" r="5" fill="white"/>
+                        <circle cx="15" cy="20" r="5" fill="white"/>
+                    </svg>
+                </div>
+                <h2 class="app-title">ReFeel-Management</h2>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="admin_home.html">
+                            <span class="icon">🏠</span> 
+                            <span>ホーム</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_userlist.html">
+                            <span class="icon">👥</span> 
+                            <span>顧客</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="admin_video.html">
+                            <span class="icon">🎬</span> 
+                            <span>動画一覧</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_report.html">
+                            <span class="icon">💰</span> 
+                            <span>統計</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings">
+                            <span class="icon">⚙️</span> 
+                            <span>設定</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#features">
+                            <span class="icon">✨</span>
+                            <span>特徴</span>
+                            <span class="new-badge">NEW</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header-bar">
+                <div class="breadcrumbs">
+                    Videos
+                </div>
+                <div class="header-actions">
+                    <span class="notification-icon">🔔</span> <!-- Notification Icon -->
+                    <button id="logout-button" class="logout-button"><a href="../admin/admin_login.html">ログアウト</a></button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="top-bar">
+                    <div class="top-actions">
+                        <button id="add-filter-button" class="btn btn-tertiary">
+                            <span class="icon">+</span> フィルターを追加
+                        </button>
+                        <button id="export-csv-button" class="btn btn-secondary">インプット</button>
+                        <!-- Assuming 'Add Student' might be for adding new videos in this context or a generic action -->
+                        <button id="add-video-button" class="btn btn-primary">追加</button> 
+                    </div>
+                    <div class="density-selector">
+                        Density: 
+                        <select name="density" id="density-select">
+                            <option value="standard">標準</option>
+                            <option value="compact">コンパクト</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="all">すべて</button>
+                    <button class="tab-button" data-tab="public">公開</button>
+                    <button class="tab-button" data-tab="draft">下書き</button>
+                    <button class="tab-button" data-tab="flagged">フラグ付き</button>
+                </div>
+
+                <div class="search-filter-bar">
+                    <div class="search-input-container">
+                        <span class="search-icon">🔍</span> <!-- Search Icon -->
+                        <input type="text" id="search-input" placeholder="タイトル、所有者、IDで検索">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="video-table">
+                        <thead>
+                            <tr>
+                                <th></th> <!-- Thumbnail Placeholder -->
+                                <th>タイトル</th>
+                                <th>長さ</th>
+                                <th>作成日</th>
+                                <th>Status</th>
+                                <th>Flags</th>
+                                <th>所有者</th>
+                            </tr>
+                        </thead>
+                        <tbody id="video-table-body">
+                            <!-- Sample Rows -->
+                            <tr data-video-id="1">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>卒業スピーチ</td>
+                                <td>03:40</td>
+                                <td>2025/06/01</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">1</span></td>
+                                <td>yumikodayo</td>
+                            </tr>
+                            <tr data-video-id="2" class="selected">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>運動会ダイジェスト</td>
+                                <td>02:10</td>
+                                <td>2025/06/02</td>
+                                <td><span class="status-badge draft">下書き</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>devon</td>
+                            </tr>
+                            <tr data-video-id="3">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>誕生日ムービー</td>
+                                <td>04:20</td>
+                                <td>2025/06/03</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">2</span></td>
+                                <td>michelle</td>
+                            </tr>
+                            <tr data-video-id="4">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>秋の遠足まとめ</td>
+                                <td>01:55</td>
+                                <td>2025/06/04</td>
+                                <td><span class="status-badge private">プライベート</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>alma</td>
+                            </tr>
+                             <tr data-video-id="5">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>合唱コンクール</td>
+                                <td>06:10</td>
+                                <td>2025/06/04</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>jackson</td>
+                            </tr>
+                            <tr data-video-id="6">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>文化祭オープニング</td>
+                                <td>02:40</td>
+                                <td>2025/06/05</td>
+                                <td><span class="status-badge draft">下書き</span></td>
+                                <td><span class="flag-count">1</span></td>
+                                <td>tim</td>
+                            </tr>
+                            <tr data-video-id="7">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>家族旅行2024</td>
+                                <td>07:12</td>
+                                <td>2025/06/06</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>debra</td>
+                            </tr>
+                            <tr data-video-id="8">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>体育祭ハイライト</td>
+                                <td>05:02</td>
+                                <td>2025/06/06</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">3</span></td>
+                                <td>nathan</td>
+                            </tr>
+                            <tr data-video-id="9">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>部活引退ムービー</td>
+                                <td>03:11</td>
+                                <td>2025/06/07</td>
+                                <td><span class="status-badge unlisted">非公開</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>felicia</td>
+                            </tr>
+                            <tr data-video-id="10">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>球技大会</td>
+                                <td>08:20</td>
+                                <td>2025/06/07</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>georgia</td>
+                            </tr>
+                             <tr data-video-id="11">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>先生メッセージ集</td>
+                                <td>02:50</td>
+                                <td>2025/06/08</td>
+                                <td><span class="status-badge private">プライベート</span></td>
+                                <td><span class="flag-count">1</span></td>
+                                <td>alma</td>
+                            </tr>
+                             <tr data-video-id="12">
+                                <td><div class="thumbnail-placeholder"></div></td>
+                                <td>夏合宿まとめ</td>
+                                <td>04:44</td>
+                                <td>2025/06/08</td>
+                                <td><span class="status-badge published">出版</span></td>
+                                <td><span class="flag-count">0</span></td>
+                                <td>dolores</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bulk-actions-bar">
+                    <div class="selection-info">
+                        <input type="checkbox" id="select-all-checkbox">
+                        <label for="select-all-checkbox">0件選択中</label>
+                        <span class="action-separator">|</span>
+                        操作:
+                        <button class="action-button">公開</button>
+                        <button class="action-button">非公開</button>
+                        <button class="action-button">アーカイブ</button>
+                        <button class="action-button">削除</button>
+                        <button class="action-button">エクスポート</button>
+                    </div>
+                    <div class="pagination">
+                        <span>1-12 of 120</span>
+                        <button class="page-arrow prev">&lt;</button>
+                        <button class="page-number active">1</button>
+                        <button class="page-number">2</button>
+                        <button class="page-number">...</button>
+                        <button class="page-number">10</button>
+                        <button class="page-arrow next">&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

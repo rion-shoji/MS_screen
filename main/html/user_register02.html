@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会員登録 | Refeel</title>
+  <link rel="stylesheet" href="../css/useradd_style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2 class="register-title">会員登録</h2>
+    <div class="auth-box">
+      <div class="form-inner">
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="name">名前</label>
+            <input type="text" id="name" name="name" placeholder="大阪ハル" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" placeholder="refeelmemories@ref.jp" required>
+          </div>
+          
+          <div class="form-group">
+            <label>性別</label>
+            <div class="gender-group">
+              <button type="button" class="gender-btn" data-value="男性">男性</button> 
+              <button type="button" class="gender-btn" data-value="女性">女性</button>
+              <button type="button" class="gender-btn no-answer" data-value="無回答">無回答</button>
+              <input type="hidden" name="gender" id="gender" value="">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>生年月日</label>
+            <div class="birth-group">
+              <input type="number" id="year" placeholder="年" required>
+              <input type="number" id="month" placeholder="月" required>
+              <input type="number" id="day" placeholder="日" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" placeholder="refeeeel0111" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary">同意して確認画面に進む</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/user_register.js"></script>

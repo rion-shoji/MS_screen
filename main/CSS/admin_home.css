@@ -1,0 +1,318 @@
+
+@charset "UTF-8";
+/* =========================================
+   home.css - ホーム画面 (ダッシュボード) 専用
+   ※必ず common.css の後に読み込む
+   ========================================= */
+
+/* ★注意: body, reset, input, sidebar などの共通設定は
+   すべて common.css 側に記述されているため、ここでは削除しています。
+*/
+
+/* --- メインコンテンツのレイアウト (Home固有) --- */
+/* common.cssの .content-wrapper をグリッドレイアウトに拡張 */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4カラム構成 */
+    grid-template-rows: auto auto 1fr;     /* カード、タスク、その他 */
+    gap: 24px;
+    max-width: 1400px; /* ダッシュボードは見やすいように幅制限 */
+    margin: 0 auto;    /* 中央寄せ */
+}
+
+/* --- Summary Cards (4つのカード) --- */
+.summary-cards-grid {
+    grid-column: 1 / -1; /* 横幅いっぱいに広げる */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.summary-card .card-label {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 8px;
+}
+
+.summary-card .card-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+/* --- Task Queue Section (タスクキュー) --- */
+.task-queue-section {
+    grid-column: 1 / 3; /* 左側2カラム分を使用 */
+    grid-row: 2;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-queue-section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.task-queue-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.tabs {
+    display: flex;
+    gap: 12px;
+}
+
+.tab-button {
+    background: none;
+    color: #718096;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.tab-button.active {
+    background-color: #eef2f7;
+    color: #0066ff;
+}
+
+.tab-button:hover {
+    background-color: #f7fafc;
+}
+
+.tab-content {
+    display: none;
+    flex-grow: 1;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table th {
+    background-color: #f7fafc;
+    color: #718096;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+}
+
+.task-table td {
+    padding: 14px 16px;
+    color: #4a5568;
+    font-size: 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.task-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.task-table .priority {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.task-table .priority.high { color: #e53e3e; background-color: #fed7d7; }
+.task-table .priority.medium { color: #dd6b20; background-color: #feebc8; }
+.task-table .priority.low { color: #38a169; background-color: #c6f6d5; }
+
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #a0aec0;
+}
+.status-indicator.pending { background-color: #0066ff; }
+.status-indicator.processing { background-color: #4299e1; }
+.status-indicator.completed { background-color: #38a169; }
+.status-indicator.failed { background-color: #e53e3e; }
+
+
+/* --- Alerts Section (アラート) --- */
+.alerts-section {
+    grid-column: 3 / 5; /* 右側2カラム分を使用 */
+    grid-row: 2;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.alerts-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 16px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.alerts-section .alert-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.alert-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.alert-icon.yellow { background-color: #f6ad55; }
+.alert-icon.red { background-color: #e53e3e; }
+.alert-icon.blue { background-color: #0066ff; }
+
+.alert-item p {
+    font-size: 14px;
+    color: #4a5568;
+    flex-grow: 1;
+}
+
+/* --- Video Pipeline Section (動画パイプライン) --- */
+.video-pipeline-section {
+    grid-column: 3 / 5;
+    grid-row: 3;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    min-height: 150px;
+}
+
+.video-pipeline-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 16px;
+}
+
+.pipeline-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 40px);
+    color: #a0aec0;
+    font-style: italic;
+}
+
+
+/* --- Responsive Design (中身のレイアウト変更のみ) --- */
+/* Sidebar/Headerのレスポンシブ動作は common.css で管理されています */
+
+@media (max-width: 1200px) {
+    .content-wrapper {
+        grid-template-columns: repeat(3, 1fr); /* 3カラムへ */
+    }
+    .summary-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .task-queue-section {
+        grid-column: 1 / 2;
+    }
+    .alerts-section {
+        grid-column: 2 / 4;
+        grid-row: 2;
+    }
+    .video-pipeline-section {
+        grid-column: 2 / 4;
+        grid-row: 3;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-wrapper {
+        grid-template-columns: repeat(2, 1fr); /* 2カラムへ */
+    }
+    .summary-cards-grid {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .task-queue-section {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+    .alerts-section {
+        grid-column: 1 / -1;
+        grid-row: 3;
+    }
+    .video-pipeline-section {
+        grid-column: 1 / -1;
+        grid-row: 4;
+    }
+}
+
+@media (max-width: 768px) {
+    .task-queue-section .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .tabs {
+        margin-top: 10px;
+    }
+    .task-table th, .task-table td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+    .summary-card .card-value {
+        font-size: 28px;
+    }
+    .summary-cards-grid {
+        grid-template-columns: 1fr; /* 1カラムへ */
+    }
+}
+
+@media (max-width: 480px) {
+    /* スマホ表示: すべて縦積み */
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .summary-cards-grid,
+    .task-queue-section,
+    .alerts-section,
+    .video-pipeline-section {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+}

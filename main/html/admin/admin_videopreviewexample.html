@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Productivity Tool</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../../css/videopreviewexample.css">
+    <!-- Optional: For icons like the trash bin -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+</head>
+<body>
+    <div class="page-container">
+
+        <!-- Top Navigation Bar -->
+        <header class="page-header">
+            <button class="menu-button" aria-label="Open menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content-area">
+            <!-- Image Display/Edit Area -->
+            <section class="image-display-section">
+                <div class="image-placeholder">
+                    <span class="placeholder-text">写真</span>
+                    <!-- An <img> tag would go here if an image is loaded -->
+                </div>
+            </section>
+
+            <!-- Prompt and Actions Sidebar -->
+            <aside class="prompt-sidebar">
+                <button class="button button-primary">
+                    プロンプト
+                </button>
+                <div class="prompt-suggestions">
+                    <button class="prompt-suggestion">プロンプト</button>
+                    <button class="prompt-suggestion">プロンプト</button>
+                    <button class="prompt-suggestion">プロンプト</button>
+                    <button class="prompt-suggestion">プロンプト</button>
+                    <button class="prompt-suggestion">プロンプト</button>
+                    <button class="prompt-suggestion">プロンプト</button>
+                </div>
+                <button class="button button-text-prompt">
+                    文章プロンプト
+                </button>
+            </aside>
+        </main>
+
+        <!-- Bottom Control Bar -->
+        <footer class="bottom-control-bar">
+            <button class="icon-button delete-button" aria-label="Delete item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 10V17H10V10H8ZM14 10V17H16V10H14ZM19 4L17.5 3H6.5L5 4H2V6H22V4H19Z" fill="currentColor"/>
+                </svg>
+            </button>
+            <div class="carousel-container">
+                <div class="carousel-items">
+                    <!-- Carousel items will be added dynamically -->
+                    <div class="carousel-item placeholder"></div>
+                    <div class="carousel-item placeholder"></div>
+                    <div class="carousel-item placeholder"></div>
+                    <div class="carousel-item placeholder"></div>
+                    <div class="carousel-item placeholder"></div>
+                    <div class="carousel-item placeholder"></div>
+                    <div class="carousel-item placeholder"></div>
+                </div>
+                <button class="icon-button add-item-button" aria-label="Add new item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="icon-button action-button" aria-label="Next action">
+                →
+            </button>
+        </footer>
+    </div>
+</body>
+</html>

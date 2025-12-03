@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音楽生成オプション</title>
+    <link rel="stylesheet" href="../css/newproject.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="card music">
+
+            <nav class="breadcrumb" aria-label="パンくず">
+                <a href="../html/home.html" class="breadcrumb__link">ホーム</a>
+                <span class="breadcrumb__sep">›</span>
+                <a href="../html/newproject_mode01.html" class="breadcrumb__link">新規作成</a>
+                <span class="breadcrumb__sep">›</span>
+                <a href="../html/newproject_photo02.html" class="breadcrumb__link">写真選択</a>
+                <span class="breadcrumb__sep">›</span>
+                <span class="breadcrumb__current"><strong>音楽選択</strong></span>
+            </nav>
+            <!-- <button class="music__close">閉じる ×</button> -->
+
+             <header class="hero">
+        <h1 class="hero__title">音楽オプション</h1>
+      </header>
+
+
+            <div class="form music__form">
+
+                <div class="form__group wide-gap">
+                    <h2 class="form__label"> 1. ムードを選択してください</h2>
+                    <div class="chipset" id="mood-selection">
+                        <button class="chip is-active" data-type="mood" data-value="">未選択</button>
+                        <button class="chip" data-type="mood" data-value="uptempo">エネルギッシュ</button>
+                        <button class="chip" data-type="mood" data-value="relaxed">落ち着いた</button>
+                        <button class="chip" data-type="mood" data-value="emotional">エモーショナル</button>
+                        <button class="chip" data-type="mood" data-value="happy">ハッピー</button>
+                        <button class="chip" data-type="mood" data-value="dramatic">ドラマチック</button>
+                        <button class="chip" data-type="mood" data-value="nostalgic">ノスタルジック</button>
+                        <button class="chip" data-type="mood" data-value="somber">しんみり</button>
+                    </div>
+                </div>
+
+                <div class="form__group">
+                    <h2 class="form__label"> 2. ジャンルを選択してください</h2>
+                    <div class="chipset" id="genre-selection">
+                        <button class="chip is-active" data-type="genre" data-value="">未選択</button>
+                        <button class="chip" data-type="genre" data-value="classic">クラシック</button>
+                        <button class="chip" data-type="genre" data-value="jazz">ジャズ</button>
+                        <button class="chip" data-type="genre" data-value="blues">ブルース</button>
+                        <button class="chip" data-type="genre" data-value="rock">ロック</button>
+                        <button class="chip" data-type="genre" data-value="pop">ポップ</button>
+                        <button class="chip" data-type="genre" data-value="rnb">R&B</button>
+                        <button class="chip" data-type="genre" data-value="hiphop">ヒップホップ</button>
+                        <button class="chip" data-type="genre" data-value="edm">EDM</button>
+                        <button class="chip" data-type="genre" data-value="folk">フォーク</button>
+                        <button class="chip" data-type="genre" data-value="country">カントリー</button>
+                        <button class="chip" data-type="genre" data-value="reggae">レゲエ</button>
+
+                    </div>
+                </div>
+
+                <div class="form__actions">
+                    <button id="back-button" class="btn btn--ghost">もどる</button>
+
+                    <button id="generate-button" class="btn btn--primary"><a href="../html/newproject_music04.html">音楽生成</a></button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/music_option.js"></script>
+</body>
+
+</html>

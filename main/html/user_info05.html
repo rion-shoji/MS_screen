@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登録情報確認 | Refeel</title>
+  <!-- マイページ編集の中のユーザー情報編集画面 -->
+  <link rel="stylesheet" href="../css/useradd_style.css">
+  <script src="../js/user_info.js" defer></script>
+</head>
+
+<body>
+  <div class="auth-container">
+    <h2 class="register-title">登録情報</h2>
+
+    <div class="auth-box">
+      <div class="form-inner">
+        <form action="#" method="post">
+          <div class="form-group confirm-item">
+            <label>名前</label>
+            <p class="confirm-text" id="confirm-name">大阪春太郎</p>
+            <button type="button" class="btn-edit" data-modal-target="modal-name">編集</button>
+          </div>
+
+          <div class="form-group confirm-item">
+            <label>メールアドレス</label>
+            <p class="confirm-text" id="confirm-email">halhal@ohs.hal.ac.jp</p>
+            <button type="button" class="btn-edit" data-modal-target="modal-email">編集</button>
+          </div>
+
+          <div class="form-group confirm-item">
+            <label>性別</label>
+            <p class="confirm-text" id="confirm-gender">男性</p>
+            <button type="button" class="btn-edit" data-modal-target="modal-gender">編集</button>
+          </div>
+
+          <div class="form-group confirm-item">
+            <label>生年月日</label>
+            <p class="confirm-text" id="confirm-birth">2000年 8月 9日</p>
+            <button type="button" class="btn-edit" data-modal-target="modal-birth">編集</button>
+          </div>
+
+          <div class="form-group confirm-item">
+            <label>パスワード</label>
+            <p class="confirm-text">***</p>
+            <button type="button" class="btn-edit" data-modal-target="modal-password">編集</button>
+          </div>
+          </form>
+<button type="button" class="btn btn-primary" onclick="location.href='../html/home.html'">戻る</button>
+  
+  <div id="modal-name" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>名前の編集</h3>
+      <div class="form-group">
+        <label for="edit-name">新しい名前</label>
+        <input type="text" id="edit-name" value="大阪春太郎">
+      </div>
+      <button type="button" class="btn btn-primary btn-save" data-confirm-id="confirm-name">保存</button>
+    </div>
+  </div>
+
+  <div id="modal-email" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>メールアドレスの編集</h3>
+      <div class="form-group">
+        <label for="edit-email">新しいメールアドレス</label>
+        <input type="email" id="edit-email" value="halhal@ohs.hal.ac.jp">
+      </div>
+      <button type="button" class="btn btn-primary btn-save" data-confirm-id="confirm-email">保存</button>
+    </div>
+  </div>
+
+  <div id="modal-gender" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>性別の編集</h3>
+      <div class="form-group gender-group">
+        <button type="button" class="gender-btn active" data-value="男性">男性</button>
+        <button type="button" class="gender-btn" data-value="女性">女性</button>
+        <button type="button" class="gender-btn no-answer" data-value="回答しない">回答しない</button>
+      </div>
+      <button type="button" class="btn btn-primary btn-save" data-confirm-id="confirm-gender">保存</button>
+    </div>
+  </div>
+
+  <div id="modal-birth" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>生年月日の編集</h3>
+      <div class="form-group birth-group">
+        <input type="number" id="edit-birth-year" placeholder="年" value="2000">
+        <input type="number" id="edit-birth-month" placeholder="月" value="8">
+        <input type="number" id="edit-birth-day" placeholder="日" value="9">
+      </div>
+      <button type="button" class="btn btn-primary btn-save" data-confirm-id="confirm-birth">保存</button>
+    </div>
+  </div>
+
+  <div id="modal-password" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>パスワードの変更</h3>
+      <div class="form-group">
+        <label for="edit-password">新しいパスワード</label>
+        <input type="password" id="edit-password">
+      </div>
+      <div class="form-group">
+        <label for="edit-password-confirm">新しいパスワード（確認）</label>
+        <input type="password" id="edit-password-confirm">
+      </div>
+      <button type="button" class="btn btn-primary btn-save" data-confirm-id="confirm-password">変更</button>
+    </div>
+  </div>
+</body>
+</html>

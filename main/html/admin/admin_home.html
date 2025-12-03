@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../../css/admin_common.css">
+    <link rel="stylesheet" href="../../css/admin_home.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <!-- Placeholder for logo icon -->
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="15" cy="15" r="14" stroke="white" stroke-width="2"/>
+                        <circle cx="10" cy="10" r="5" fill="white"/>
+                        <circle cx="20" cy="10" r="5" fill="white"/>
+                        <circle cx="15" cy="20" r="5" fill="white"/>
+                    </svg>
+                </div>
+                <h2 class="app-title">ReFeel 管理</h2>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="admin_home.html">
+                            <span class="icon">🏠</span>
+                            <span>ホーム</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_.html">
+                            <span class="icon">👨‍💼</span> 
+                            <span>管理者</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_userlist.html">
+                            <span class="icon">👥</span> 
+                            <span>顧客</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin_report.html">
+                            <span class="icon">💰</span> 
+                            <span>統計</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a href="admin_video.html">
+                            <span class="icon">🎬</span> 
+                            <span>動画一覧</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings">
+                            <span class="icon">⚙️</span> 
+                            <span>設定</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#features">
+                            <span class="icon">✨</span> 
+                            <span>特徴</span>
+                            <span class="new-badge">NEW</span>
+                        </a>
+                    </li> -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header-bar">
+                <div class="header-title">
+                    <h1>ホーム</h1>
+                </div>
+                <div class="header-actions">
+                    <span class="notification-icon">🔔</span> 
+                    <button id="logout-button" class="logout-button"><a href="../admin/admin_login.html">ログアウト</a></button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Summary Cards -->
+                <div class="summary-cards-grid">
+                    <div class="summary-card">
+                        <div class="card-label">未処理のタスク</div>
+                        <div class="card-value">52</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-label">SLA違反</div>
+                        <div class="card-value">9</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-label">今日の入稿数</div>
+                        <div class="card-value">124</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-label">エラー率</div>
+                        <div class="card-value">3.2%</div>
+                    </div>
+                </div>
+
+                <!-- Task Queue Section -->
+                <section class="task-queue-section">
+                    <div class="section-header">
+                        <h2>タスクキュー</h2>
+                        <div class="tabs">
+                            <button class="tab-button active" data-tab="review">審査</button>
+                            <button class="tab-button" data-tab="copyright">著作権</button>
+                            <button class="tab-button" data-tab="pending">審査待ち</button>
+                        </div>
+                    </div>
+                    <div class="tab-content active" id="review">
+                        <div class="table-container">
+                            <table class="task-table">
+                                <thead>
+                                    <tr>
+                                        <th>件名</th>
+                                        <th>理由</th>
+                                        <th>経過時間</th>
+                                        <th>優先度</th>
+                                        <th>担当者</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>違反疑いの進出内容</td>
+                                        <td>暴飲の疑い</td>
+                                        <td>3h</td>
+                                        <td><span class="priority high">高</span></td>
+                                        <td><span class="status-indicator pending"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>収集のための規則違反</td>
+                                        <td>通知対応待ち</td>
+                                        <td>2h</td>
+                                        <td><span class="priority medium">要</span></td>
+                                        <td><span class="status-indicator processing"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>公開再開条件不適</td>
+                                        <td>再審査中</td>
+                                        <td>5h</td>
+                                        <td><span class="priority low">中</span></td>
+                                        <td><span class="status-indicator completed"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>失敗</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><span class="status-indicator failed"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Add other tab contents for copyright and pending if needed, or keep as placeholder -->
+                    <div class="tab-content" id="copyright">
+                        <p>Copyright task queue content goes here.</p>
+                    </div>
+                    <div class="tab-content" id="pending">
+                        <p>Pending review task queue content goes here.</p>
+                    </div>
+                </section>
+
+                <!-- Alerts Section -->
+                <section class="alerts-section">
+                    <h2>アラート</h2>
+                    <div class="alert-item">
+                        <span class="alert-icon yellow"></span>
+                        <p>エンコードキューの滞留値が閾値を超過</p>
+                    </div>
+                    <div class="alert-item">
+                        <span class="alert-icon yellow"></span>
+                        <p>ストレージ使用量が85%に到達</p>
+                    </div>
+                    <div class="alert-item">
+                        <span class="alert-icon yellow"></span>
+                        <p>APIエラー率の急増が検出</p>
+                    </div>
+                </section>
+
+                <!-- Video Pipeline Section -->
+                <section class="video-pipeline-section">
+                    <h2>動画パイプライン</h2>
+                    <div class="pipeline-placeholder">
+                        <!-- Content for video pipeline would go here -->
+                        <p>現在アクティブなビデオ パイプラインはありません。</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/admin_home.js"></script>
+</body>
+</html>

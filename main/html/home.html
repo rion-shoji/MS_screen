@@ -1,0 +1,95 @@
+<!-- pages/home.html -->
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReFeel | ホーム</title>
+  <link rel="stylesheet" href="../css/home_styles.css" />
+</head>
+<script src="../js/home.js"></script>
+<body>
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+       <img class="sidebar__logo" src="../img/refeel003.png" alt="ReFeel" />
+    </div>
+
+    <button class="btn btn--primary sidebar__new" onclick="location.href='../html/newproject_mode01.html'">
+  <span class="icon">＋</span> 新規作成
+</button>
+</a>
+
+    <nav class="sidebar__nav" aria-label="サイドメニュー">
+      <div class="nav-group">
+        <ul class="nav">
+          <li class="nav__item"><a href="../html/home.html">ホーム</a></li>
+          <li class="nav__item"><a href="../html/project_list.html">プロジェクト</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar__footer">
+      <a class="sidebar__settings" href="#"><span class="icon">⚙</span> 設定</a>
+    </div>
+  </aside>
+
+  <!-- トップバー -->
+  <header class="topbar">
+  <h1 class="topbar__title">ホーム</h1>
+  <div class="topbar__spacer"></div>
+  
+  <div class="topbar__account">
+    <img class="avatar" src="https://placehold.co/32x32" alt="春太郎" />
+    <span class="topbar__name" id="userNameDisplay">春太郎</span>
+
+    <div class="account-menu">
+      <a href="../html/user_info05.html" class="account-menu__item">登録情報</a>
+      <hr class="account-menu__line"> <a href="../html/user_login01.html" class="account-menu__item account-menu__item--logout">ログアウト</a>
+    </div>
+  </div>
+  </header>
+
+  <!-- メイン -->
+  <main class="main">
+    <!-- ヒーロー -->
+    <section class="home-hero" role="button" tabindex="0" onclick="location.href='../html/newproject_mode01.html'">
+  ＋ 新しいプロジェクト
+</section>
+　　　　
+    <!-- 最近のプロジェクト -->
+    <section class="home-section">
+      <div class="home-section__head">
+        <h2 class="home-section__title">最近のプロジェクト</h2>
+        <button class="btn btn--more" onclick="location.href='../html/project_list.html'">もっとみる</button>
+      </div>
+
+      <div class="home-grid">
+        <!-- カード1（画像あり） -->
+        <article class="home-card">
+          <div class="home-card__media">
+            <img src="../img/JW.jpg" alt="春次郎の運動会" />
+            <span class="home-card__duration">05:09</span>
+          </div>
+          <div class="home-card__meta">
+            <div class="home-card__title"><a href="../html/project_list.html">春次郎の運動会</a></div>
+            <time class="home-card__date" datetime="2025-09-23">2025/09/23</time>
+          </div>
+        </article>
+
+        <!-- 空カード2 -->
+        <article class="home-card home-card--empty">
+          <div class="home-card__media"></div>
+          <div class="home-card__meta"><div class="home-card__title">&nbsp;</div></div>
+        </article>
+
+        <!-- 空カード3 -->
+        <article class="home-card home-card--empty">
+          <div class="home-card__media"></div>
+          <div class="home-card__meta"><div class="home-card__title">&nbsp;</div></div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

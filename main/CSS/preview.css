@@ -1,144 +1,326 @@
-/* preview style for the slideshow+audiomix UI */
+@charset "utf-8";
 
-/* 説明用の色。後で消す */
-:root{
-  --bg:#ffffff;
-  --video-placeholder:#0f0;
-  --video-seek:#f00;
-  --music-seek:#00f;
-}
-
-*{box-sizing:border-box}
-
-html,body{height:100%}
-body{
-  margin:0;
-  background:var(--bg);
-  color:#fff;
-  font-family:Segoe UI, Meiryo, "Hiragino Kaku Gothic ProN", sans-serif;
+/* =========================================================
+   Base Layout
+   ========================================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
 }
 
-/* プレビューエリア */
-.preview-root{
-  min-height:100vh;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  padding:24px 12px;
-}
-.preview-area{
-  width:80%;
-  max-width:1100px;
-  position:relative;
+.preview-root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* 動画プレースホルダー */
-.video-wrapper{
-  width: min(720px, 100%);
-  margin: 0 auto 12px;
-}
-.video-placeholder{
-  width:100%;
-  background:var(--video-placeholder);
-  aspect-ratio: 16 / 9;
-  height: auto;
-  position:relative;
-  border-radius:2px;
-  box-shadow:0 0 0 4px rgba(0,0,0,0.04) inset;
-  border:4px solid #000;
+.preview-area {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    transition: all 0.3s ease;
 }
 
-/* 再生/停止ボタン */
-.play-btn{
-  display:flex; /* block-level flex so margin:auto centers the button */
-  margin:10px auto;
-  width:48px;
-  height:48px;
-  border-radius:6px;
-  background:rgba(0,0,0,0.6);
-  border:2px solid rgba(255,255,255,0.12);
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  color:#fff;
+/* =========================================================
+   Video Player
+   ========================================================= */
+.video-wrapper {
+    position: relative;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    aspect-ratio: 16 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.play-btn:focus{outline:3px solid rgba(255,255,255,0.12)}
-
-.icon{display:block}
-.play-icon{
-  width:0;height:0;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;
-}
-.pause-icon{
-  width:14px;height:18px;display:none;position:relative;
-}
-.pause-icon::before,.pause-icon::after{
-  content:"";position:absolute;top:0;width:4px;height:100%;background:#fff;border-radius:1px;
-}
-.pause-icon::before{left:0}
-.pause-icon::after{right:0}
-
-.play-btn.playing .play-icon{display:none}
-.play-btn.playing .pause-icon{display:block}
-
-/* シークバー */
-.seekbars{display:flex;flex-direction:column;gap:12px}
-
-/* 動画のシークバー */
-.video-seekbar{
-  width:100%;
-  height:30px;
-  background:var(--video-seek);
-  border-radius:4px;
-  border:4px solid #000;
+/* 動画自体 */
+#mainVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 動画の比率を維持して収める */
+    display: block;
 }
 
-/* 音楽のシークバー */
-.music-seekbar{
-  width:100%;
-  height:30px;
-  position:relative;
-}
-.music-track{
-  position:relative;
-  height:30px;
-  background:rgba(0,0,0,0.03);
-  border-radius:2px;
-  top:12px;
-  overflow:visible;
-  border:4px solid #000;
-}
-.music-bar{
-  position:absolute;
-  left:0;
-  top:-4px;
-  height:30px;
-  background:var(--music-seek);
-  border-radius:4px;
-  cursor:grab;
-  touch-action:none;
-}
-.music-bar:active{cursor:grabbing}
-
-/* エクスポートボタン */
-.actions{margin-top:28px;display:flex;justify-content:flex-end}
-.export-btn{
-  background:#fff;color:#000;padding:12px 18px;border-radius:6px;border:none;cursor:pointer;font-weight:600
+/* 再生ボタン（オーバーレイ） */
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s;
+    z-index: 10;
 }
 
-/* ハンバーガーメニュー */
-.menu-area{position:absolute;top:12px;right:12px}
-.menu-btn{
-  width:40px;height:34px;border-radius:6px;border:none;background:rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;padding:6px
+.video-wrapper:hover .play-btn {
+    opacity: 1;
 }
-.hamburger-line{display:block;width:20px;height:2px;background:#333;margin:3px 0;border-radius:2px}
-.menu-dropdown{position:absolute;right:0;top:44px;background:#fff;color:#000;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.12);display:none;min-width:120px;padding:8px 0}
-.menu-dropdown.open{display:block}
-.menu-item{display:block;width:100%;padding:8px 12px;border:none;background:transparent;text-align:left;cursor:pointer}
-.menu-item:hover{background:rgba(0,0,0,0.04)}
 
-/* レスポンシブ */
-@media (max-width:720px){
-  .preview-area{width:95%}
-  .video-placeholder{height:180px}
+.play-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.play-btn[aria-pressed="true"] .play-icon { display: none; }
+.play-btn[aria-pressed="false"] .pause-icon { display: none; }
+
+
+/* =========================================================
+   Video Playback Bar (Seekbar)
+   ========================================================= */
+.seekbars {
+    margin-bottom: 24px;
+    padding: 0 8px; 
+}
+
+/* トラック全体（背景のグレーの線） */
+.video-seekbar-track {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    cursor: pointer;
+    touch-action: none; 
+    transition: height 0.2s ease;
+}
+
+/* ホバー/ドラッグ時に少し太くして操作しやすく */
+.video-seekbar-track:hover,
+.video-seekbar-track.active {
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* 進捗バー（色付き） */
+.video-progress-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 0%; /* JSで制御 */
+    background-color: #4aa8d8;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* つまみ (Thumb) */
+.video-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0%; /* JSで制御 */
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border: 2px solid #4aa8d8;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); /* 通常時は隠す */
+    transition: transform 0.2s ease;
+    pointer-events: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* トラックにホバーまたはドラッグ中はつまみを表示 */
+.video-seekbar-track:hover .video-thumb,
+.video-seekbar-track.active .video-thumb {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+/* =========================================================
+   Actions (Buttons)
+   ========================================================= */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.export-btn, .share-btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s, transform 0.1s;
+    text-decoration: none;
+}
+
+/* Export */
+.export-btn {
+    background-color: #0e808e;
+    color: #fff;
+}
+.export-btn a {
+    color: #fff; text-decoration: none;
+    width: 100%; height: 100%;
+}
+.export-btn:hover { background-color: #0b6672; }
+
+/* Share */
+.share-btn {
+    background-color: #4aa8d8;
+    color: #fff;
+}
+.share-btn:hover { background-color: #3b96c6; transform: translateY(-1px); }
+.share-btn:active { transform: scale(0.96); }
+
+
+/* =========================================================
+   Share Modal (Mobile Bottom Sheet Style)
+   ========================================================= */
+.share-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.share-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.share-modal-inner {
+    background: #fff;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    padding: 24px;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.share-modal.active .share-modal-inner {
+    transform: translateY(0);
+}
+
+.share-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.share-close-btn {
+    border: none;
+    background: #f1f1f1;
+    cursor: pointer;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.share-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.share-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 8px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 15px;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.share-item:last-child {
+    border-bottom: none;
+}
+
+.share-item:hover {
+    background-color: #f9f9f9;
+}
+
+.share-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.share-cancel-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    background: #f1f1f1;
+    color: #333;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+.share-cancel-btn:hover {
+    background: #e4e4e4;
+}
+
+/* =========================================================
+   QR Code Display Area
+   ========================================================= */
+.qr-display-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    animation: fadeIn 0.4s ease;
+}
+
+#qrcode {
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#qrcode img {
+    margin: 0 auto;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Videos - ReFeel Admin</title>
+    
+    <link rel="stylesheet" href="../../css/admin_common.css">
+    <link rel="stylesheet" href="../../css/admin_uservideo.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="15" cy="15" r="14" stroke="white" stroke-width="2"/>
+                        <circle cx="10" cy="10" r="5" fill="white"/>
+                        <circle cx="20" cy="10" r="5" fill="white"/>
+                        <circle cx="15" cy="20" r="5" fill="white"/>
+                    </svg>
+                </div>
+                <h2 class="app-title">ReFeel 管理</h2>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="admin_home.html"><span class="icon">🏠</span><span>ホーム</span></a></li>
+                    <li class="nav-item"><a href="admin_.html"><span class="icon">👨‍💼</span><span>管理者</span></a></li>
+                    <li class="nav-item active"><a href="admin_userlist.html"><span class="icon">👥</span><span>顧客</span></a></li>
+                    <li class="nav-item"><a href="admin_report.html"><span class="icon">💰</span><span>統計</span></a></li>
+                    <li class="nav-item"><a href="#settings"><span class="icon">⚙️</span><span>設定</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header-bar">
+                <div class="header-title">
+                    <h1>Users > <span style="color:#0066ff">山本由美子</span> > 動画</h1>
+                </div>
+                <div class="header-actions">
+                    <span class="notification-icon">🔔</span>
+                    <button id="logout-button" class="logout-button">ログアウト</button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="top-actions">
+                    <button id="export-csv-button" class="btn btn-secondary">CSVエクスポート</button>
+                    <button id="upload-video-button" class="btn btn-primary">動画をアップロード</button>
+                </div>
+
+                <div class="search-filter-bar">
+                    <div class="filter-dropdown">
+                        <select name="filter" id="filter-select">
+                            <option value="all">すべての動画</option>
+                            <option value="published">公開済み</option>
+                            <option value="draft">下書き</option>
+                            <option value="processing">処理中</option>
+                        </select>
+                    </div>
+                    <div class="search-input-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" placeholder="動画タイトルで検索...">
+                    </div>
+                </div>
+
+                <div class="master-detail-container" id="master-detail-container">
+                    
+                    <div class="list-pane table-container">
+                        <table class="data-table video-table-override">
+                            <thead>
+                                <tr>
+                                    <th>サムネイル</th>
+                                    <th>タイトル</th>
+                                    <th>長さ</th>
+                                    <th>作成日</th>
+                                    <th>状態</th>
+                                    <th></th> </tr>
+                            </thead>
+                            <tbody id="video-table-body">
+                                <tr data-id="1" data-title="春次郎の運動会" data-status="published" data-date="2025/06/01" data-duration="3:45">
+                                    <td><div class="video-thumb-placeholder"></div></td>
+                                    <td>春次郎の運動会</td>
+                                    <td>3:45</td>
+                                    <td>2025/06/01</td>
+                                    <td><span class="status-badge published">公開中</span></td>
+                                    <td>⋮</td>
+                                </tr>
+                                <tr data-id="2" data-title="家族旅行 in 北海道" data-status="published" data-date="2025/06/12" data-duration="5:20">
+                                    <td><div class="video-thumb-placeholder"></div></td>
+                                    <td>家族旅行 in 北海道</td>
+                                    <td>5:20</td>
+                                    <td>2025/06/12</td>
+                                    <td><span class="status-badge published">公開中</span></td>
+                                    <td>⋮</td>
+                                </tr>
+                                <tr data-id="3" data-title="NewProject0709" data-status="draft" data-date="2025/07/09" data-duration="4:15">
+                                    <td><div class="video-thumb-placeholder"></div></td>
+                                    <td>NewProject0709</td>
+                                    <td>4:15</td>
+                                    <td>2025/07/09</td>
+                                    <td><span class="status-badge draft">下書き</span></td>
+                                    <td>⋮</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="pagination">
+                            <a href="#" class="page-number active">1</a>
+                            <a href="#" class="page-number">2</a>
+                            <a href="#" class="page-number">3</a>
+                        </div>
+                    </div>
+
+                    <div class="detail-pane" id="detail-pane">
+                        <div class="detail-header">
+                            <h3 id="detail-title">動画タイトル</h3>
+                            <button class="close-detail-btn" id="close-detail-btn">✕</button>
+                        </div>
+                        
+                        <div class="video-player-area">
+                            <div class="player-placeholder">
+                                <span>▶ 再生プレビュー</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-info">
+                            <div class="info-row">
+                                <span class="label">ステータス</span>
+                                <span class="value" id="detail-status">公開中</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">作成日</span>
+                                <span class="value" id="detail-date">2025/06/01</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">再生時間</span>
+                                <span class="value" id="detail-duration">3:45</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">解像度</span>
+                                <span class="value">1080p</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">ファイルサイズ</span>
+                                <span class="value">450 MB</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-actions">
+                            <button class="btn btn-primary" style="width:100%">編集画面へ</button>
+                            <button class="btn-danger-outline" style="width:100%">削除</button>
+                        </div>
+                    </div>
+
+                </div></div>
+        </main>
+    </div>
+
+    <script src="../../js/admin_uservideo.js"></script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+@charset "UTF-8";
+
+/* =========================================
+   レポート画面固有スタイル
+   ========================================= */
+
+/* --- 期間選択バー --- */
+.period-selector-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    background-color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.period-label {
+    font-size: 14px;
+    color: #4a5568;
+}
+.period-label strong {
+    color: #1a202c;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.period-actions {
+    display: flex;
+    gap: 12px;
+}
+/* common.cssのbtnクラスを使用するが、ここでは少し小さめにする調整 */
+.period-actions .btn {
+    min-width: auto;
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+/* --- サマリーカード (Summary Cards) --- */
+.summary-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #718096;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.change {
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.change.positive { color: #38a169; } /* Green */
+.change.negative { color: #e53e3e; } /* Red */
+.arrow { font-size: 16px; line-height: 1; }
+
+/* --- チャートグリッド (Common Grid Layout) --- */
+.charts-grid,
+.lower-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.chart-section {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+.chart-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+/* --- 1. Daily Trend Chart (SVG) --- */
+.chart-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.trend-chart {
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    /* チャートエリアの高さ確保 */
+    min-height: 180px;
+}
+
+.trend-chart .axis.y-axis {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 11px;
+    color: #a0aec0;
+}
+
+.trend-chart .chart-lines {
+    flex-grow: 1;
+    position: relative;
+    border-left: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.axis.x-axis {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px; /* y-axisの幅分ずらす */
+    margin-top: 8px;
+    font-size: 11px;
+    color: #a0aec0;
+}
+
+/* --- 2. Bar Charts (Violation / Funnel) --- */
+.bar-chart-container,
+.funnel-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.bar-item, .funnel-item {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.bar-item .label, .funnel-item .label {
+    width: 80px;
+    text-align: right;
+    margin-right: 12px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.bar-track {
+    flex-grow: 1;
+    height: 12px;
+    background-color: #edf2f7;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    /* 色はHTMLのインラインスタイルまたはクラスで指定 */
+}
+
+/* ファネルチャート用の色 (青系グラデーション) */
+.funnel-item .bar-fill {
+    background-color: #4299e1;
+}
+
+.bar-item .value, .funnel-item .value {
+    width: 40px;
+    text-align: right;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* --- 3. Cohort Grid --- */
+.cohort-grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.cohort-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cohort-row {
+    display: flex;
+    gap: 4px;
+}
+
+.cohort-cell {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: #edf2f7;
+}
+
+/* ヒートマップの色定義 */
+.cohort-cell.c-100 { background-color: #3182ce; } /* Dark Blue */
+.cohort-cell.c-95  { background-color: #4299e1; }
+.cohort-cell.c-90  { background-color: #63b3ed; }
+.cohort-cell.c-80  { background-color: #90cdf4; }
+.cohort-cell.c-70  { background-color: #bee3f8; }
+.cohort-cell.c-60  { background-color: #dbeafe; } /* Very Light */
+.cohort-cell.c-50  { background-color: #e2e8f0; }
+.cohort-cell.c-40  { background-color: #edf2f7; }
+.cohort-cell.c-30  { background-color: #f7fafc; }
+.cohort-cell.c-20  { background-color: #fff; border: 1px solid #edf2f7; }
+.cohort-cell.empty { background-color: transparent; }
+
+.cohort-legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #718096;
+}
+.legend-bar {
+    width: 100px;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #edf2f7, #3182ce);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1200px) {
+    .summary-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .charts-grid,
+    .lower-charts-grid {
+        grid-template-columns: 1fr; /* スタック表示 */
+    }
+}
+
+@media (max-width: 600px) {
+    .summary-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .period-selector-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .period-actions {
+        justify-content: space-between;
+    }
+    .period-actions .btn {
+        flex: 1;
+    }
+}

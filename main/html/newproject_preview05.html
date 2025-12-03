@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>プレビュー</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/preview.css">
+</head>
+<body>
+    <main class="preview-root">
+        <section class="preview-area">
+
+            <div class="video-wrapper">
+                <video id="mainVideo" src="../img/view_movie.mp4" playsinline></video>
+                
+                <button id="playBtn" class="play-btn" aria-pressed="false" aria-label="再生">
+                    <span class="icon play-icon"><i class="fas fa-play"></i></span>
+                    <span class="icon pause-icon"><i class="fas fa-pause"></i></span>
+                </button>
+            </div>
+
+            <div class="seekbars">
+                <div class="video-seekbar-track" id="videoSeekbarTrack">
+                    <div class="video-progress-fill" id="videoProgressFill"></div>
+                    <div class="video-thumb" id="videoThumb"></div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="exportBtn" class="export-btn">
+                    <a href="../html/home.html">ダウンロード</a>
+                </button>
+                <button id="shareBtn" class="share-btn">
+                    <i class="fas fa-share-nodes"></i> 共有
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="shareModal" class="share-modal" aria-hidden="true">
+        <div class="share-modal-inner">
+            <div class="share-modal-header">
+                <span id="shareTitle">共有</span>
+                <button id="shareCloseBtn" class="share-close-btn" aria-label="閉じる">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <ul id="shareList" class="share-list">
+                <li class="share-item" data-action="mail">
+                    <i class="fas fa-envelope"></i>
+                    <span>メールで送信</span>
+                </li>
+                <li class="share-item" data-action="copy">
+                    <i class="fas fa-copy"></i>
+                    <span>リンクをコピー</span>
+                </li>
+                <li class="share-item" data-action="qr">
+                    <i class="fas fa-qrcode"></i>
+                    <span>QRコードを表示</span>
+                </li>
+            </ul>
+
+            <div id="qrDisplayArea" class="qr-display-area" style="display: none;">
+                <div id="qrcode"></div>
+                <p class="qr-caption" style="margin-top:10px; color:#666; font-size:0.9rem;">
+                    スマホで読み取ってください
+                </p>
+                <button id="qrBackBtn" class="share-cancel-btn" style="margin-top:15px;">戻る</button>
+            </div>
+
+            <button id="shareCancelBtn" class="share-cancel-btn">キャンセル</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <script src="../js/preview.js"></script>
+</body>
+</html>

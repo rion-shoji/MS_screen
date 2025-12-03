@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会員登録確認 | Refeel</title>
+  <link rel="stylesheet" href="../css/useradd_style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h2 class="register-title">会員登録確認</h2>
+    <div class="auth-box">
+      <div class="form-inner">
+          <div class="form-group">
+            <label>名前</label>
+            <p class="confirm-text" id="conf-name">Wait...</p>
+          </div>
+
+          <div class="form-group">
+            <label>メールアドレス</label>
+            <p class="confirm-text" id="conf-email">Wait...</p>
+          </div>
+
+          <div class="form-group">
+            <label>性別</label>
+            <p class="confirm-text" id="conf-gender">Wait...</p>
+          </div>
+
+          <div class="form-group">
+            <label>生年月日</label>
+            <p class="confirm-text" id="conf-birth">Wait...</p>
+          </div>
+
+          <div class="form-group">
+            <label>パスワード</label>
+            <p class="confirm-text" id="conf-password">Wait...</p>
+          </div>
+
+          <div class="button-group">
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">戻る</button>
+            <button type="button" class="btn btn-primary" id="btn-register">登録</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+      // ▼▼▼ 1つずつ取り出して表示 ▼▼▼
+      document.getElementById('conf-name').textContent = sessionStorage.getItem('reg_name');
+      document.getElementById('conf-email').textContent = sessionStorage.getItem('reg_email');
+      document.getElementById('conf-gender').textContent = sessionStorage.getItem('reg_gender');
+      document.getElementById('conf-birth').textContent = sessionStorage.getItem('reg_birth');
+      document.getElementById('conf-password').textContent = sessionStorage.getItem('reg_password');
+
+      // 「登録」ボタンクリック時
+      document.getElementById('btn-register').addEventListener('click', () => {
+          
+          // ログイン状態を作る
+          // ここで保存していた 'reg_name' を、正式な 'userName' として保存し直します
+          const name = sessionStorage.getItem('reg_name');
+          
+          sessionStorage.setItem('userId', 'new_user_001'); // ユーザーID
+          sessionStorage.setItem('userName', name);         // ユーザー名
+
+          // 完了画面へ
+          window.location.href = 'user_complete04.html';
+      });
+  });
+</script>

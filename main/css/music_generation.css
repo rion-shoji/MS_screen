@@ -1,0 +1,239 @@
+/* -------------------------------------- */
+/* 基本変数 */
+/* -------------------------------------- */
+:root {
+    --bg: #f3f8ff;
+    --card: #ffffff;
+    --border: #e6ebf2;
+    --text: #2b3545;
+    --muted: #6b7280;
+    --brand: #57c2cc;
+    --brand-weak: #c9e9ff;
+    --primary: #18a5b6;
+    --primary-pressed: #0e808e;
+    --chip-active: #ee8f86;
+    --radius-lg: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 12px 32px rgba(20, 40, 60, .08);
+    --shadow-sm: 0 2px 8px rgba(20, 40, 60, .06);
+}
+
+/* 全体レイアウト */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: linear-gradient(#f7fbff, #edf4ff);
+}
+
+.page {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.card {
+    width: min(960px, 100%);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* 中身を縦積みに */
+}
+
+/* -------------------------------------- */
+/* パンくずリスト（重要修正） */
+/* -------------------------------------- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左寄せを強制 */
+    flex-wrap: wrap;
+    gap: 8px; /* 項目間の隙間 */
+    padding: 16px 24px;
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+    background: #fff; /* 背景色を念のため指定 */
+}
+.breadcrumb__link { color: inherit; text-decoration: none; }
+.breadcrumb__sep { color: #ccc; font-size: 12px; }
+.breadcrumb__current { font-weight: 700; color: var(--text); }
+
+/* -------------------------------------- */
+/* 見出し帯 */
+/* -------------------------------------- */
+.hero {
+    background: var(--brand);
+    padding: 32px 24px;
+    text-align: center;
+    color: #fff;
+}
+.hero__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* -------------------------------------- */
+/* 音楽カードリスト（Gridレイアウトに変更） */
+/* -------------------------------------- */
+.music-options {
+    display: grid;
+    /* 最小260px幅のカードを画面幅に合わせて自動で並べる */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    padding: 40px;
+}
+
+.music-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.music-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.music-card h3 {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: var(--text);
+}
+
+/* 波形アニメーション */
+.waveform {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 24px;
+}
+.waveform-bar {
+    width: 4px;
+    background-color: var(--brand);
+    height: 100%;
+    border-radius: 2px;
+    animation: wave 1s ease-in-out infinite alternate;
+}
+.waveform-bar:nth-child(odd) { animation-delay: 0.2s; height: 60%; }
+.waveform-bar:nth-child(even) { animation-delay: 0s; height: 100%; }
+
+@keyframes wave {
+    0% { transform: scaleY(0.5); }
+    100% { transform: scaleY(1); }
+}
+
+/* プレイヤー部分 */
+.audio-controls {
+    width: 100%;
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.play-pause-button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.progress-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.seek-bar {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+}
+
+.time-display {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+}
+
+/* ラジオボタン */
+.radio-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* -------------------------------------- */
+/* フッターアクション */
+/* -------------------------------------- */
+.actions {
+    padding: 0 40px 40px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.btn {
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn--ghost {
+    background: transparent;
+    border: 2px solid #ED8C86;
+    color: #ED8C86;
+}
+.btn--ghost:hover { background: #fff5f5; }
+
+.btn--primary {
+    background: var(--primary);
+    color: #fff;
+}
+.btn--primary:hover { background: var(--primary-pressed); }
+
+/* モバイル対応 */
+@media (max-width: 600px) {
+    .page { padding: 0; }
+    .card { border-radius: 0; border: none; }
+    .music-options { padding: 24px; grid-template-columns: 1fr; }
+    .actions { justify-content: center; }
+}
