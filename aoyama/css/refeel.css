@@ -83,10 +83,25 @@ body {
 .rf-header-close {
   border: none;
   background: transparent;
-  font-size: 22px;
   cursor: pointer;
   color: #9aa2b5;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
 }
+
+/* × の部分だけ少し大きめ */
+.rf-header-close-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* 「閉じる」テキスト */
+.rf-header-close-label {
+  font-size: 13px;
+}
+
 
 /* ステップバー */
 
