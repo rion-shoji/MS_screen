@@ -1,0 +1,685 @@
+/* refeel.css */
+:root {
+  --bg: #f3f8ff;
+  --card: #ffffff;
+  --border: #e3e7ee;
+  --text-main: #263547;
+  --text-muted: #717b8c;
+
+  --brand: #57c2cc;        /* ティール */
+  --brand-soft: #c9e9ff;
+  --accent-pink: #ff8d98;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 999px;
+
+  --shadow-card: 0 12px 32px rgba(22, 35, 55, 0.08);
+  --shadow-soft: 0 4px 12px rgba(22, 35, 55, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* ============= 共通レイアウト ============= */
+
+.rf-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.rf-header {
+  background-color: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+.rf-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto; /* 左ロゴ / 中央ステップバー / 右× */
+  align-items: center;
+  column-gap: 24px;
+}
+
+/* ロゴ */
+
+.rf-logo-area {
+  display: flex;
+  align-items: center;
+}
+
+.rf-logo-img {
+  display: block;
+  height: 42px;  /* ロゴの高さ。好みで微調整 */
+  width: auto;
+}
+
+.rf-header-center {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px; /* ヘッダー中央エリアを広く使う */
+}
+
+.rf-header-close {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: #9aa2b5;
+}
+
+/* ステップバー */
+
+.rf-stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 720px; /* ここを変えるとヘッダーでの占有幅を調整できる */
+}
+
+.rf-stepper-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.rf-stepper-track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: #dde3ee;
+  border-radius: 999px;
+  margin-top: 4px;
+}
+
+.rf-stepper-fill {
+  position: absolute;
+  height: 100%;
+  background-color: var(--brand);
+  border-radius: 999px;
+  width: 0;
+}
+
+.rf-stepper-dots {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: -6px;
+  bottom: -6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rf-stepper-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #dde3ee;
+  border: 2px solid #dde3ee;
+}
+
+.rf-stepper-dot.is-active {
+  background-color: #ffffff;
+  border-color: var(--brand);
+}
+
+.rf-stepper-dot.is-done {
+  background-color: var(--brand);
+  border-color: var(--brand);
+}
+
+/* メインコンテンツ */
+
+.rf-main {
+  flex: 1;
+  padding: 24px 0 24px;
+}
+
+.rf-main-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 共通カード */
+
+.rf-card {
+  background-color: var(--card);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 24px 30px;
+}
+
+/* フッター */
+
+.rf-footer {
+  margin-top: 16px;
+  padding: 12px 0 18px;
+  background-color: #ffffff;
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.04);  /* 画面本体との境界線だけ残す */
+}
+
+.rf-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-top: 1px solid #e3e7ee;  ← これ削除 */
+  /* padding-top もいらなければ削除 */
+}
+
+/* ボタン */
+
+.rf-btn {
+  appearance: none;
+  border-radius: 999px;
+  padding: 10px 28px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.rf-btn-primary {
+  background-color: var(--brand);
+  color: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
+.rf-btn-primary:hover {
+  filter: brightness(0.98);
+}
+
+.rf-btn-secondary {
+  background-color: var(--accent-pink);
+  color: #ffffff;
+}
+
+/* チップ（選択ボタン） */
+
+.rf-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rf-chip {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: var(--text-main);
+}
+
+.rf-chip.is-selected {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: #ffffff;
+}
+
+/* ラジオ風丸 */
+
+.rf-radio-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+}
+
+.rf-radio-circle::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--brand);
+  opacity: 0;
+}
+
+.rf-radio.is-checked .rf-radio-circle::after {
+  opacity: 1;
+}
+
+/* 見出し */
+
+.rf-h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.rf-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.rf-section-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* テキストエリア */
+
+.rf-textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  resize: vertical;
+  font-size: 13px;
+}
+
+/* ============= 1. 写真を追加・設定画面 ============= */
+
+.rf-layout-photo {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1.4fr) 0.9fr;
+  gap: 20px;
+}
+
+/* 左：サイドサムネ */
+
+.rf-photo-sidebar {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 18px 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rf-photo-thumb {
+  border-radius: 16px;
+  background-color: #eceff4;
+  border: 2px solid transparent;
+  height: 92px;
+}
+
+.rf-photo-thumb.is-active {
+  border-color: var(--brand);
+}
+
+.rf-photo-thumb-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #666;
+}
+
+/* 中央：プレビュー */
+
+.rf-photo-stage {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rf-photo-stage-inner {
+  width: 100%;
+  height: 360px;
+  border-radius: 18px;
+  background-color: #e1e4ea;
+  position: relative;
+}
+
+/* 右：設定フォーム */
+
+.rf-photo-form {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 22px 24px;
+  font-size: 13px;
+}
+
+.rf-photo-form-block {
+  margin-bottom: 18px;
+}
+
+.rf-photo-form-block:last-child {
+  margin-bottom: 0;
+}
+
+.rf-photo-form-label {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+/* ============= 2. 音楽オプション画面 ============= */
+
+.rf-music-option-layout .rf-card {
+  padding-top: 30px;
+  padding-bottom: 26px;
+}
+
+.rf-mood-grid,
+.rf-genre-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* ============= 3. 音楽選択画面 ============= */
+
+.rf-music-select-layout .rf-card-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.rf-music-card {
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background-color: #ffffff;
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rf-music-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.rf-music-card-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rf-music-card-time {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.rf-music-card-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.rf-music-select-bottom {
+  margin-top: 26px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 試聴ボタン / ラジオ */
+
+.rf-btn-ghost {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 18px;
+  background-color: var(--brand);
+  color: #ffffff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.rf-music-radio-label {
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+/* ============= 4. プレビュー画面 ============= */
+
+.rf-preview-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) 0.9fr;
+  gap: 18px;
+}
+
+.rf-preview-card-main {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 22px 24px 24px;
+}
+
+.rf-preview-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.rf-preview-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.rf-preview-video {
+  border-radius: 18px;
+  background-color: #e1e4ea;
+  height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rf-preview-play {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.rf-preview-play::before {
+  content: "";
+  border-style: solid;
+  border-width: 12px 0 12px 18px;
+  border-color: transparent transparent transparent var(--brand);
+  margin-left: 4px;
+}
+
+/* 再生バー＆音量バー（ダミー） */
+
+.rf-preview-seek {
+  margin-top: 18px;
+}
+
+.rf-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #dde3ee;
+  position: relative;
+  overflow: hidden;
+}
+
+.rf-slider-fill {
+  position: absolute;
+  height: 100%;
+  background-color: var(--brand-soft);
+  width: 60%;
+}
+
+.rf-slider-handle {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--brand);
+  transform: translate(-50%, -50%);
+}
+
+.rf-preview-volume {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rf-volume-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #ccd2e0;
+}
+
+/* 右側：微調整カード */
+
+.rf-preview-side-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 20px 22px;
+  font-size: 13px;
+}
+
+.rf-preview-side-row {
+  margin-bottom: 18px;
+}
+
+.rf-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rf-toggle {
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  background-color: #dde3ee;
+  position: relative;
+}
+
+.rf-toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.rf-toggle.is-on {
+  background-color: var(--brand);
+}
+
+.rf-toggle.is-on .rf-toggle-knob {
+  left: 20px;
+}
+
+/* 画面比率ボタン */
+
+.rf-ratio-group {
+  display: flex;
+  gap: 10px;
+}
+
+.rf-ratio-btn {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.rf-ratio-btn.is-selected {
+  background-color: var(--brand);
+  color: #ffffff;
+  border-color: var(--brand);
+}
+
+/* プレビュー画面の下ボタン */
+
+.rf-preview-bottom-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.rf-btn-outline {
+  border-radius: 999px;
+  padding: 10px 22px;
+  border: 1px solid var(--brand);
+  background-color: #ffffff;
+  color: var(--brand);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.rf-btn-outline:hover {
+  background-color: #ebfbff;
+}
+
+/* ちょっとしたレスポンシブ保険 */
+
+@media (max-width: 1100px) {
+  .rf-layout-photo {
+    grid-template-columns: 160px 1.1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "side stage"
+      "side form";
+  }
+  .rf-photo-sidebar { grid-area: side; }
+  .rf-photo-stage { grid-area: stage; }
+  .rf-photo-form { grid-area: form; }
+
+  .rf-preview-layout {
+    grid-template-columns: 1fr;
+  }
+}

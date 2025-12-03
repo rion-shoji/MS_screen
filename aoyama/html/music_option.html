@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ReFeel | 音楽オプション</title>
+    <link rel="stylesheet" href="../css/refeel.css">
+    <script src="../js/refeel.js" defer></script>
+</head>
+<body data-step="option">
+<div class="rf-app">
+
+    <!-- ヘッダー -->
+    <header class="rf-header">
+        <div class="rf-header-inner">
+            <div class="rf-logo-area">
+                <img src="../img/refeel-logo.png"
+                     alt="ReFeel あの日 あの時 あの場所で"
+                     class="rf-logo-img">
+            </div>
+
+            <div class="rf-header-center">
+                <div class="rf-stepper">
+                    <div class="rf-stepper-labels">
+                        <span>写真を追加・設定</span>
+                        <span>音楽オプション</span>
+                        <span>音楽選択</span>
+                        <span>プレビュー</span>
+                    </div>
+                    <div class="rf-stepper-track">
+                        <div class="rf-stepper-fill"></div>
+                        <div class="rf-stepper-dots">
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="rf-header-close">×</button>
+        </div>
+    </header>
+
+    <!-- メイン -->
+    <main class="rf-main">
+        <div class="rf-main-inner rf-music-option-layout">
+            <div class="rf-card">
+                <h1 class="rf-h1">ムードを選択</h1>
+                <div class="rf-section-sub">動画全体の「空気感」に近いものを選んでください。</div>
+
+                <div class="rf-mood-grid rf-chip-group" data-multi="false">
+                    <button type="button" class="rf-chip is-selected">やさしい</button>
+                    <button type="button" class="rf-chip">元気</button>
+                    <button type="button" class="rf-chip">しっとり</button>
+                    <button type="button" class="rf-chip">ドラマチック</button>
+                    <button type="button" class="rf-chip">ノスタルジック</button>
+                    <button type="button" class="rf-chip">明るく爽やか</button>
+                    <button type="button" class="rf-chip">少し切ない</button>
+                </div>
+
+                <h2 class="rf-section-title" style="margin-top: 12px;">2. ジャンルを選択</h2>
+                <div class="rf-section-sub">BGMの「音のテイスト」を選んでください。</div>
+
+                <div class="rf-genre-grid rf-chip-group" data-multi="false">
+                    <button type="button" class="rf-chip is-selected">ピアノ中心</button>
+                    <button type="button" class="rf-chip">アコースティック</button>
+                    <button type="button" class="rf-chip">バンド風</button>
+                    <button type="button" class="rf-chip">シネマティック</button>
+                    <button type="button" class="rf-chip">Lo-fi / chill</button>
+                    <button type="button" class="rf-chip">EDM寄り</button>
+                    <button type="button" class="rf-chip">オーケストラ</button>
+                    <button type="button" class="rf-chip">おまかせ</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="rf-footer">
+        <div class="rf-footer-inner">
+            <button class="rf-btn rf-btn-secondary">&lt; 戻る</button>
+            <button class="rf-btn rf-btn-primary">進む &gt;</button>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

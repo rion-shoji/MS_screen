@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ReFeel | 写真を追加・設定</title>
+    <link rel="stylesheet" href="../css/refeel.css">
+    <script src="../js/refeel.js" defer></script>
+</head>
+<body data-step="photo">
+<div class="rf-app">
+
+    <!-- ヘッダー -->
+    <header class="rf-header">
+        <div class="rf-header-inner">
+            <!-- 左：ロゴ -->
+            <div class="rf-logo-area">
+                <img src="../img/refeel-logo.png"
+                     alt="ReFeel あの日 あの時 あの場所で"
+                     class="rf-logo-img">
+            </div>
+
+            <!-- 中央：ステップバー -->
+            <div class="rf-header-center">
+                <div class="rf-stepper">
+                    <div class="rf-stepper-labels">
+                        <span>写真を追加・設定</span>
+                        <span>音楽オプション</span>
+                        <span>音楽選択</span>
+                        <span>プレビュー</span>
+                    </div>
+                    <div class="rf-stepper-track">
+                        <div class="rf-stepper-fill"></div>
+                        <div class="rf-stepper-dots">
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右：閉じるボタン -->
+            <button class="rf-header-close">×</button>
+        </div>
+    </header>
+
+    <!-- メイン -->
+    <main class="rf-main">
+        <div class="rf-main-inner">
+            <div class="rf-layout-photo">
+
+                <!-- 左：サムネ -->
+                <aside class="rf-photo-sidebar">
+                    <div class="rf-photo-thumb rf-photo-thumb-add">
+                        ＋
+                    </div>
+                    <div class="rf-photo-thumb is-active"></div>
+                    <div class="rf-photo-thumb"></div>
+                    <div class="rf-photo-thumb"></div>
+                </aside>
+
+                <!-- 中央：プレビュー -->
+                <section class="rf-photo-stage">
+                    <div class="rf-photo-stage-inner">
+                        <!-- 写真プレビューはここに描画想定 -->
+                    </div>
+                </section>
+
+                <!-- 右：設定フォーム -->
+                <aside class="rf-photo-form">
+                    <div class="rf-photo-form-block">
+                        <div class="rf-section-title">1. 被写体</div>
+                        <div class="rf-section-sub">この写真の主役は？</div>
+                        <div class="rf-chip-group" data-multi="false">
+                            <button type="button" class="rf-chip is-selected">人物</button>
+                            <button type="button" class="rf-chip">子ども</button>
+                            <button type="button" class="rf-chip">ペット</button>
+                            <button type="button" class="rf-chip">風景</button>
+                        </div>
+                    </div>
+
+                    <div class="rf-photo-form-block">
+                        <div class="rf-section-title">2. 動き</div>
+                        <div class="rf-section-sub">どんな動きにしたい？</div>
+                        <div class="rf-chip-group" data-multi="false">
+                            <button type="button" class="rf-chip is-selected">走らせる</button>
+                            <button type="button" class="rf-chip">手を振らせる</button>
+                            <button type="button" class="rf-chip">ゆっくり歩く</button>
+                        </div>
+                    </div>
+
+                    <div class="rf-photo-form-block">
+                        <div class="rf-section-title">3. 雰囲気</div>
+                        <div class="rf-section-sub">シーンの空気感は？</div>
+                        <div class="rf-chip-group" data-multi="false">
+                            <button type="button" class="rf-chip is-selected">やさしい</button>
+                            <button type="button" class="rf-chip">元気</button>
+                            <button type="button" class="rf-chip">しっとり</button>
+                        </div>
+                    </div>
+
+                    <div class="rf-photo-form-block">
+                        <div class="rf-photo-form-label">ひとことメモ（任意）</div>
+                        <textarea class="rf-textarea" placeholder="この写真に込めた想いや、補足メモがあれば書きます。"></textarea>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="rf-footer">
+        <div class="rf-footer-inner">
+            <button class="rf-btn rf-btn-secondary">&lt; 戻る</button>
+            <button class="rf-btn rf-btn-primary">次へ &gt;</button>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

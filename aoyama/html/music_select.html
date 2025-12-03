@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ReFeel | 音楽選択</title>
+    <link rel="stylesheet" href="../css/refeel.css">
+    <script src="../js/refeel.js" defer></script>
+</head>
+<body data-step="select">
+<div class="rf-app">
+
+    <!-- ヘッダー -->
+    <header class="rf-header">
+        <div class="rf-header-inner">
+            <div class="rf-logo-area">
+                <img src="../img/refeel-logo.png"
+                     alt="ReFeel あの日 あの時 あの場所で"
+                     class="rf-logo-img">
+            </div>
+
+            <div class="rf-header-center">
+                <div class="rf-stepper">
+                    <div class="rf-stepper-labels">
+                        <span>写真を追加・設定</span>
+                        <span>音楽オプション</span>
+                        <span>音楽選択</span>
+                        <span>プレビュー</span>
+                    </div>
+                    <div class="rf-stepper-track">
+                        <div class="rf-stepper-fill"></div>
+                        <div class="rf-stepper-dots">
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="rf-header-close">×</button>
+        </div>
+    </header>
+
+    <!-- メイン -->
+    <main class="rf-main">
+        <div class="rf-main-inner rf-music-select-layout">
+            <h1 class="rf-h1">動画に使うBGMを選んでください</h1>
+            <div class="rf-section-sub">
+                写真から生成した3パターンのオリジナル音楽です。試聴して、いちばんしっくりくるものを1曲選択します。
+            </div>
+
+            <div class="rf-card-list">
+                <!-- カード1 -->
+                <article class="rf-music-card">
+                    <div class="rf-music-card-header">
+                        <div class="rf-music-card-title">オリジナル BGM #01</div>
+                        <div class="rf-music-card-time">0:30</div>
+                    </div>
+                    <p class="rf-music-card-desc">
+                        アップテンポで写真を明るく見せるポップな曲
+                    </p>
+                    <div class="rf-chip-group" data-multi="true">
+                        <button type="button" class="rf-chip is-selected">明るい</button>
+                        <button type="button" class="rf-chip is-selected">元気</button>
+                    </div>
+                    <div style="margin-top: 14px;">
+                        <button type="button" class="rf-btn-ghost">試聴する</button>
+                    </div>
+                    <label class="rf-music-radio-label">
+                        <input type="radio" name="bgmChoice" value="1" checked>
+                        <span>この曲を使う</span>
+                    </label>
+                </article>
+
+                <!-- カード2 -->
+                <article class="rf-music-card">
+                    <div class="rf-music-card-header">
+                        <div class="rf-music-card-title">オリジナル BGM #02</div>
+                        <div class="rf-music-card-time">0:30</div>
+                    </div>
+                    <p class="rf-music-card-desc">
+                        少し落ち着いた雰囲気で、やさしさを引き立てる曲
+                    </p>
+                    <div class="rf-chip-group" data-multi="true">
+                        <button type="button" class="rf-chip is-selected">やさしい</button>
+                        <button type="button" class="rf-chip">しっとり</button>
+                    </div>
+                    <div style="margin-top: 14px;">
+                        <button type="button" class="rf-btn-ghost">試聴する</button>
+                    </div>
+                    <label class="rf-music-radio-label">
+                        <input type="radio" name="bgmChoice" value="2">
+                        <span>この曲を使う</span>
+                    </label>
+                </article>
+
+                <!-- カード3 -->
+                <article class="rf-music-card">
+                    <div class="rf-music-card-header">
+                        <div class="rf-music-card-title">オリジナル BGM #03</div>
+                        <div class="rf-music-card-time">0:30</div>
+                    </div>
+                    <p class="rf-music-card-desc">
+                        ノスタルジックなムードで、家族の思い出に合う曲
+                    </p>
+                    <div class="rf-chip-group" data-multi="true">
+                        <button type="button" class="rf-chip is-selected">ノスタルジック</button>
+                        <button type="button" class="rf-chip">しっとり</button>
+                    </div>
+                    <div style="margin-top: 14px;">
+                        <button type="button" class="rf-btn-ghost">試聴する</button>
+                    </div>
+                    <label class="rf-music-radio-label">
+                        <input type="radio" name="bgmChoice" value="3">
+                        <span>この曲を使う</span>
+                    </label>
+                </article>
+            </div>
+
+            <div class="rf-music-select-bottom">
+                <!-- 余白だけ（右下の「進む」はフッター側） -->
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="rf-footer">
+        <div class="rf-footer-inner">
+            <button class="rf-btn rf-btn-secondary">&lt; 戻る</button>
+            <button class="rf-btn rf-btn-primary">進む &gt;</button>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

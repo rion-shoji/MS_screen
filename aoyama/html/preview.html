@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ReFeel | プレビュー</title>
+    <link rel="stylesheet" href="../css/refeel.css">
+    <script src="../js/refeel.js" defer></script>
+</head>
+<body data-step="preview">
+<div class="rf-app">
+
+    <!-- ヘッダー -->
+    <header class="rf-header">
+        <div class="rf-header-inner">
+            <div class="rf-logo-area">
+                <img src="../img/refeel-logo.png"
+                     alt="ReFeel あの日 あの時 あの場所で"
+                     class="rf-logo-img">
+            </div>
+
+            <div class="rf-header-center">
+                <div class="rf-stepper">
+                    <div class="rf-stepper-labels">
+                        <span>写真を追加・設定</span>
+                        <span>音楽オプション</span>
+                        <span>音楽選択</span>
+                        <span>プレビュー</span>
+                    </div>
+                    <div class="rf-stepper-track">
+                        <div class="rf-stepper-fill"></div>
+                        <div class="rf-stepper-dots">
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                            <div class="rf-stepper-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="rf-header-close">×</button>
+        </div>
+    </header>
+
+    <!-- メイン -->
+    <main class="rf-main">
+        <div class="rf-main-inner">
+            <h1 class="rf-h1">出来上がった動画をみてみよう</h1>
+
+            <div class="rf-preview-layout">
+                <!-- 左：動画プレビュー -->
+                <section class="rf-preview-card-main">
+                    <div class="rf-preview-title">○○ちゃん 3歳の思い出ハイライト</div>
+                    <div class="rf-preview-meta">
+                        長さ：0:45　　写真：5枚　　BGM：オリジナル #02（しっとり）
+                    </div>
+
+                    <div class="rf-preview-video">
+                        <div class="rf-preview-play"></div>
+                    </div>
+
+                    <div class="rf-preview-seek">
+                        <div class="rf-slider">
+                            <div class="rf-slider-fill"></div>
+                            <div class="rf-slider-handle"></div>
+                        </div>
+                    </div>
+
+                    <div class="rf-preview-volume">
+                        <div class="rf-volume-icon"></div>
+                        <div class="rf-slider" style="max-width: 260px;">
+                            <div class="rf-slider-fill" style="width: 70%;"></div>
+                            <div class="rf-slider-handle" style="left: 70%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="rf-preview-bottom-actions">
+                        <button class="rf-btn-outline">ダウンロード</button>
+                        <button class="rf-btn-outline">SNSで共有</button>
+                        <button class="rf-btn-outline">QRコードで保存</button>
+                    </div>
+                </section>
+
+                <!-- 右：微調整 -->
+                <aside class="rf-preview-side-card">
+                    <div class="rf-preview-side-row">
+                        <div class="rf-section-title">微調整</div>
+                    </div>
+
+                    <div class="rf-preview-side-row">
+                        <div class="rf-photo-form-label">BGMの大きさ</div>
+                        <div class="rf-slider">
+                            <div class="rf-slider-fill" style="width: 60%;"></div>
+                            <div class="rf-slider-handle" style="left: 60%;"></div>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                            小さめ　　　　　　　　　　　　　標準　　　　　　　　　　　　　大きめ
+                        </div>
+                    </div>
+
+                    <div class="rf-preview-side-row">
+                        <div class="rf-photo-form-label">再生スピード</div>
+                        <div class="rf-chip-group" data-multi="false">
+                            <button type="button" class="rf-chip">0.75x</button>
+                            <button type="button" class="rf-chip is-selected">1.0x</button>
+                            <button type="button" class="rf-chip">1.25x</button>
+                        </div>
+                    </div>
+
+                    <div class="rf-preview-side-row">
+                        <div class="rf-photo-form-label">タイトル・テロップ</div>
+                        <div class="rf-toggle-row" style="margin-top: 8px;">
+                            <span>表示する</span>
+                            <div class="rf-toggle">
+                                <div class="rf-toggle-knob"></div>
+                            </div>
+                        </div>
+                        <div class="rf-toggle-row" style="margin-top: 10px;">
+                            <span>ループ再生</span>
+                            <div class="rf-toggle is-on">
+                                <div class="rf-toggle-knob"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rf-preview-side-row">
+                        <div class="rf-photo-form-label">画面比率</div>
+                        <div class="rf-ratio-group" style="margin-top: 6px;">
+                            <button type="button" class="rf-ratio-btn is-selected">16 : 9</button>
+                            <button type="button" class="rf-ratio-btn">1 : 1</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="rf-footer">
+        <div class="rf-footer-inner">
+            <button class="rf-btn rf-btn-secondary">&lt; 戻る</button>
+            <div></div>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
