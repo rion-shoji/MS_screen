@@ -1,6 +1,6 @@
 // refeel.js
 
-// ステップバーの状態反映
+// ステップバーの状態反映（前画面 → 今画面をなめらかに）
 (function () {
   const body = document.body;
   const step = body.dataset.step;
@@ -14,17 +14,45 @@
     preview: 3,
   };
 
-  if (fill && dots.length === 4 && step && step in indexMap) {
-    const idx = indexMap[step];
+  if (!fill || dots.length !== 4 || !step || !(step in indexMap)) return;
 
-    dots.forEach((dot, i) => {
-      if (i < idx) dot.classList.add("is-done");
-      if (i === idx) dot.classList.add("is-active");
-    });
+  const currentIndex = indexMap[step];
 
-    const percentages = [0, 33, 66, 100];
-    fill.style.width = percentages[idx] + "%";
-  }
+  // 前回のステップ（なければ今と同じにしておく）
+  const prevStored = sessionStorage.getItem("rfCurrentStepIndex");
+  const prevIndex =
+    prevStored !== null && !Number.isNaN(parseInt(prevStored, 10))
+      ? parseInt(prevStored, 10)
+      : currentIndex;
+
+  sessionStorage.setItem("rfCurrentStepIndex", String(currentIndex));
+
+  const percentages = [0, 33, 66, 100];
+  const startPercent = percentages[Math.max(0, Math.min(prevIndex, 3))];
+  const endPercent = percentages[currentIndex];
+
+  // まずは「前の位置」で描画してから、次のフレームで伸ばす
+  fill.style.transition = "none";
+  fill.style.width = startPercent + "%";
+
+  requestAnimationFrame(() => {
+    // reflow を挟んでから transition を戻す
+    // eslint-disable-next-line no-unused-expressions
+    fill.offsetWidth;
+
+    fill.style.transition = "width 0.6s ease";
+    fill.style.width = endPercent + "%";
+  });
+
+  // ドットの状態も更新（色変化はCSS側のtransition任せ）
+  dots.forEach((dot, i) => {
+    dot.classList.remove("is-done", "is-active");
+    if (i < currentIndex) {
+      dot.classList.add("is-done");
+    } else if (i === currentIndex) {
+      dot.classList.add("is-active");
+    }
+  });
 })();
 
 // チップの選択（単一・複数両対応）
